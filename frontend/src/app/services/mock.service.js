@@ -1,3 +1,4 @@
+/* eslint-disable */
 class MockService {
   constructor() {
     'ngInject';
@@ -5,7 +6,7 @@ class MockService {
     this.data = {
       game: {
         id: 1,
-        startDate: '1448126151258',
+        start_date: '1448126151258',
         type: 'CTF',
         duration: '3600',
         pin: '1234',
@@ -32,13 +33,13 @@ class MockService {
         field: {
           id: 1,
           name: 'Field 1',
-          latitudeNw: 46.307795,
-          longitudeNw: 16.337911,
-          latitudeSe: 46.307243,
-          longitudeSe: 16.338671,
+          latitude_nw: 46.307795,
+          longitude_nw: 16.337911,
+          latitude_se: 46.307243,
+          longitude_se: 16.338671,
           occupied: true
         },
-        teamA: {
+        team_a: {
           id: 1,
           name: 'A',
           count: 2,
@@ -50,7 +51,7 @@ class MockService {
               id: 1,
               name: 'Azzaro Mujić',
               ready: false,
-              latitude: 46.307795 + Math.random() / 10000,
+              latitude: 46.307795 - Math.random() / 10000,
               longitude: 16.337911 + Math.random() / 10000,
               alive: true
             },
@@ -58,13 +59,13 @@ class MockService {
               id: 2,
               name: 'Ivan Škoro',
               ready: true,
-              latitude: 46.307795 + Math.random() / 10000,
+              latitude: 46.307795 - Math.random() / 10000,
               longitude: 16.337911 + Math.random() / 10000,
               alive: false
             }
           ]
         },
-        teamB: {
+        team_b: {
           id: 2,
           name: 'B',
           count: 2,
@@ -77,7 +78,7 @@ class MockService {
               name: 'Gabrijel Mrgan',
               ready: false,
               latitude: 46.307243 + Math.random() / 10000,
-              longitude: 16.338671 + Math.random() / 10000,
+              longitude: 16.338671 - Math.random() / 10000,
               alive: false
             },
             {
@@ -85,7 +86,7 @@ class MockService {
               name: 'Dinko Ostrečki',
               ready: true,
               latitude: 46.307243 + Math.random() / 10000,
-              longitude: 16.338671 + Math.random() / 10000,
+              longitude: 16.338671 - Math.random() / 10000,
               alive: true
             }
           ]
@@ -93,7 +94,8 @@ class MockService {
       }
     };
   }
-
+  /* eslint-enable */
+  
   getData() {
     return this.data;
   }

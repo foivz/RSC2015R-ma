@@ -1,20 +1,193 @@
 @import 'mixins';
-
-$column-left-width: 25%;
-$column-right-width: 100% - $column-left-width;
+@import 'colors';
 
 .container {
-  &__column {
-    &--left {
-      width: $column-left-width;
+  &__row {
+    &--top {
+      height: 17vh;
+      display: table;
+      background-color: $primary-background-color;
     }
 
-    &--right {
-      width: $column-right-width;
+    &--bottom {
+      height: 83vh;
     }
   }
 }
 
 .angular-google-map-container {
-  height: 100vh;
+  height: 83vh;
+}
+
+.scoreboard {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+  &__type {
+    padding-bottom: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    border-bottom: 1px solid $primary-text-color;
+  }
+
+  &__teams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__team {
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: table;
+
+    &--left {
+      text-align: right;
+
+      .scoreboard__team-name {
+        float: right;
+        color: $left-color;
+        font-weight: 200;
+      }
+
+      .scoreboard__team-score {
+        float: right;
+      }
+    }
+
+    &--right {
+      text-align: left;
+
+      .scoreboard__team-name {
+        float: left;
+        color: $right-color;
+        font-weight: 200;
+      }
+
+      .scoreboard__team-score {
+        float: left;
+      }
+    }
+  }
+
+  &__team-name {
+    width: 180px;
+    text-align: center;
+  }
+
+  &__team-score {
+    width: 150px;
+    text-align: center;
+  }
+
+  &__team-container {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 60px;
+  }
+
+  .clock {
+    padding-top: 7px;
+    font-weight: normal;
+    font-size: 14px;
+  }
+}
+
+.players {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+
+  &--left {
+    left: 0;
+    color: $left-color;
+    text-align: right;
+
+    .player-list__item {
+      background-position: right 18px top 50%;
+
+      &.is-dead {
+        color: $left-light-color;
+      }
+    }
+  }
+
+  &--right {
+    right: 0;
+    color: $right-color;
+    text-align: left;
+
+    .player-list__item {
+      background-position: left 18px top 50%;
+
+      &.is-dead {
+        color: $right-light-color;
+      }
+    }
+  }
+
+  &__counter {
+    height: 17vh;
+    display: table;
+    width: 100%;
+  }
+
+  &__counter-text {
+    font-size: 24px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: $primary-text-color;
+  }
+}
+
+.player-list {
+  background-color: transparentize($primary-background-color, 0.05);
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  height: 83vh;
+
+  &__item {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 0 60px;
+    width: 100%;
+
+    &:hover {
+      background-color: #EEEEEE;
+    }
+
+    &.is-dead {
+      background: {
+        image: url('/assets/images/skull.svg');
+        size: 24px 24px;
+        repeat: no-repeat;
+      }
+
+      .player-list__name {
+        text-decoration: line-through;
+      }
+    }
+
+  }
+
+  &__name {
+    width: 100%;
+    line-height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
 }

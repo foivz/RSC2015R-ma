@@ -1,4 +1,9 @@
+@import 'colors';
 @import 'mixins';
+
+body {
+  color: $primary-text-color;
+}
 
 .container {
   @include clearfix();
@@ -14,5 +19,10 @@
     float: left;
     width: 100%;
     height: 100%;
+  }
+
+  &__row {
+    width: 100%;
+    height: 100vh;
   }
 }
