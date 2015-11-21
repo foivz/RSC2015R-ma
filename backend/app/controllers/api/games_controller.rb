@@ -7,7 +7,7 @@ class Api::GamesController < Api::ApiBaseController
   skip_before_action :check_access_token, only: [:index, :show]
 
   def index
-    @games = Game.where(active: true)
+    @games = Game.where(active: true, playing: true)
   end
 
   def create
@@ -62,7 +62,7 @@ class Api::GamesController < Api::ApiBaseController
   end
 
   def start
-    @game.update_attributes(playing: true)
+    @game.update_attributes(playing: true, start_date: Date.now)
     render :show
   end
 
