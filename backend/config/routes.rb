@@ -8,8 +8,14 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show, :create, :update, :destroy] do
       get :me, on: :collection
+      put :update_location, path: 'location', on: :member
     end
 
     resources :fields, only: [:index, :show, :create, :update, :destroy]
+
+    resources :games, only: [:index, :show, :create, :update, :destroy] do
+      post :join, path: 'join', on: :collection
+      put :start, path: 'start', on: :member
+    end
   end
 end

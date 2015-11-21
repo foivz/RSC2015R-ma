@@ -21,6 +21,17 @@ class User < ActiveRecord::Base
   validates_inclusion_of :active, in: [true, false], if: :active
   validates_presence_of :role
 
+  # Player
+  belongs_to :game
+  belongs_to :team
+
+  # Individual messages
+  has_many :received_individual_messages, class_name: 'IndividualMessage', foreign_key: 'recipient_id'
+  has_many :sent_individual_messages, class_name: 'IndividualMessage', foreign_key: 'sender_id'
+
+  # Team messages
+  has_many :team_messages
+
 private
   def set_active
     self.active = true
