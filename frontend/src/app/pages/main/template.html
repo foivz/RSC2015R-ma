@@ -1,11 +1,18 @@
 <div class="container">
   <div class="container__column container__column--left">
     <div class="scoreboard">
-      <div class="scoreboard__team">{{main.teamScores.left}}</div>
+      <div class="scoreboard__team">{{main.team.left.score}}</div>
       <div class="scoreboard__divider">:</div>
-      <div class="scoreboard__team">{{main.teamScores.right}}</div>
+      <div class="scoreboard__team">{{main.team.right.score}}</div>
     </div>
-    <clock start-date="Date.now()" duration="1000"></clock>
+    <clock start-date="1448121793032" duration="3600"></clock>
+    <div class="players">
+      <ul class="player-list">
+        <li class="player-list__item" ng-repeat="player in main.team.left.players">
+          {{player.position.latitude}}
+        </li>
+      </ul>
+    </div>
   </div>
   <section class="map container__column container__column--right">
     <ui-gmap-google-map control="main.map" center="main.map.center" pan="false" zoom="main.map.zoom" options="options" refresh="main.map.shouldRefresh">

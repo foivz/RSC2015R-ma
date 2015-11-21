@@ -7,6 +7,7 @@ class MainController {
     this.game = mainService.getGame();
     this.updaterService = updaterService;
     this.map = this.game.field;
+    this.setTeams();
     this.setAllMarkers();
 
     this.updaterService.startUpdates(this.update, this);
@@ -18,10 +19,29 @@ class MainController {
     this.markers = [];
 
     this.players = this.game.players.map((el) => {
-      return new Player(el.id, el.position, el.team);
+      var x = new Player(el.id, el.position, el.team);
+      if (el.team === 1) {
+        this.team.left.players.push(x);
+      } else {
+        this.team.right.players.push(x);
+      }
+      return x;
     });
 
     this.markers = this.markers.concat(this.players);
+  }
+
+  setTeams() {
+    this.team = {
+      left: {
+        players: [],
+        score: 0
+      },
+      right: {
+        players: [],
+        score: 0
+      }
+    };
   }
 
   update(data) {
@@ -43,10 +63,8 @@ class MainController {
   }
 
   updateScores(a, b) {
-    this.teamScores = {
-      left: a,
-      right: b
-    };
+    this.team.left.score = a;
+    this.team.right.score = b;
   }
 
   refreshMap() {

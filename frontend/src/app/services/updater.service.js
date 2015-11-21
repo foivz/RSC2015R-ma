@@ -1,8 +1,9 @@
 class UpdaterService {
-  constructor($http, configService) {
+  constructor($http, configService, mockService) {
     'ngInject';
     this.config = configService.getData();
     this.$http = $http;
+    this.mock = mockService;
   }
 
   setId(id) {
@@ -23,37 +24,7 @@ class UpdaterService {
 
   getGameData() {
     if (this.config.mock === true) {
-      var game = {
-        field: {
-          center: {
-            latitude: 51.219053,
-            longitude: 4.404418
-          },
-          zoom: 20
-        },
-        scoreA: Math.random(),
-        scoreB: Math.random(),
-        players: [
-          {
-            id: 1,
-            position: {
-              latitude: 51.219053 + (Math.random() / 10000),
-              longitude: 4.404418 + (Math.random() / 10000)
-            },
-            team: 1
-          },
-          {
-            id: 2,
-            position: {
-              latitude: 51.219053 + (Math.random() / 10000),
-              longitude: 4.404518 + (Math.random() / 10000)
-            },
-            team: 2
-          }
-        ]
-      };
-
-      return Promise.resolve(game);
+      return Promise.resolve(this.parseGameData(this.mock.getData()));
     }
     return this.$http.get(this.config.apiUrl + '/games/' + this.id).then((data) => {
       this.parseGameData(data);
@@ -63,7 +34,7 @@ class UpdaterService {
   }
 
   parseGameData(data) {
-    this.data = data.data.game;
+    this.data = data.game;
     return this.data;
   }
 }

@@ -2,9 +2,18 @@ class ClockController {
   constructor(moment) {
     'ngInject';
 
-    // "this.creation" is avaible by directive option "bindToController: true"
-    this.relativeDate = moment(this.startDate).fromNow();
-    debugger;
+    this.elapsed = moment(Date.now()).unix() - moment(this.startDate).unix();
+    this.currentTime = parseInt(this.duration, 10) - this.elapsed;
+    setInterval(() => {
+      this.currentTime--;
+
+      this.calculateTimes();
+    }, 1000);
+  }
+
+  calculateTimes() {
+    this.minutes = Math.floor(this.currentTime / 60);
+    this.seconds = moment().seconds(this.currentTime % 60).format('ss');
   }
 }
 

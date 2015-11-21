@@ -1,7 +1,8 @@
 class GamesService {
-  constructor($http, configService) {
+  constructor($http, configService, mockService) {
     'ngInject';
     this.config = configService.getData();
+    this.mock = mockService;
     this.$http = $http;
   }
 
@@ -14,20 +15,20 @@ class GamesService {
         },
         {
           name: 'testis2',
-          id: 2
+          id: 1
         },
         {
           name: 'testis3',
-          id: 3
+          id: 1
         },
         {
           name: 'testis4',
-          id: 4
+          id: 1
         }
       ];
       return Promise.resolve(games);
     }
-    return this.$http.get(this.config.apiUrl + '/games/all').then((data) => {
+    return this.$http.get(this.config.apiUrl + '/games').then((data) => {
       this.parseGamesData(data);
     }).catch((e) => {
       throw new Error(e);
@@ -41,36 +42,9 @@ class GamesService {
 
   getGameData(g) {
     if (this.config.mock === true) {
-      var game = {
-        field: {
-          center: {
-            latitude: 51.219053,
-            longitude: 4.404418
-          },
-          zoom: 20
-        },
-        players: [
-          {
-            id: 1,
-            position: {
-              latitude: 51.219053,
-              longitude: 4.404418
-            },
-            team: 1
-          },
-          {
-            id: 2,
-            position: {
-              latitude: 51.219053,
-              longitude: 4.404518
-            },
-            team: 2
-          }
-        ]
-      };
-
-      return Promise.resolve(game);
+      return Promise.resolve(this.parseGameData(this.mock.getData()));
     }
+
     return this.$http.get(this.config.apiUrl + '/games/' + g.id).then((data) => {
       this.parseGameData(data);
     }).catch((e) => {
@@ -79,7 +53,7 @@ class GamesService {
   }
 
   parseGameData(data) {
-    this.data = data.data.game;
+    this.data = data.game;
     return this.data;
   }
 }

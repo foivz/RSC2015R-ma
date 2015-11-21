@@ -6,6 +6,7 @@ import routerConfig from './index.route';
 import runBlock from './index.run';
 
 import ConfigService from './services/config.service';
+import MockService from './services/mock.service';
 import UpdaterService from './services/updater.service';
 
 import MainService from './pages/main/service';
@@ -35,11 +36,15 @@ angular.module('testGen', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'u
 
   .run(runBlock)
   .service('configService', ConfigService)
+  .service('mockService', MockService)
   .service('updaterService', UpdaterService)
+
   .service('mainService', MainService)
   .service('gamesService', GamesService)
+
   .controller('MainController', MainController)
   .controller('GamesController', GamesController)
+
   .directive('clock', () => new ClockDirective());
 
   // .service('githubContributor', GithubContributorService)
