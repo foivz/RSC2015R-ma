@@ -20,6 +20,10 @@ class Api::GamesController < Api::ApiBaseController
     team_b_data = params[:team_b]
     team_b = Team.create(name: 'B', count: count, latitude: team_b_data[:latitude], longitude: team_b_data[:longitude])
 
+    # Field
+    field_id = params[:field_id]
+    Field.update(field_id, occupied: true)
+
     # Game
     game_data = params
     @game = Game.create(name: game_data[:name], field_id: game_data[:field_id], type: game_data[:type], duration: game_data[:duration],
@@ -74,6 +78,9 @@ class Api::GamesController < Api::ApiBaseController
     @game.team_b.users.each do |player|
       player.update_attributes(game_id: nil, team_id: nil, ready: false)
     end
+
+    # Release field
+    Field.update(@game.field_id, occupied: false)
 
     # Delete teams
     @game.team_a.destroy
