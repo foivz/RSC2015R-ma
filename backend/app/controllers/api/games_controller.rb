@@ -7,7 +7,7 @@ class Api::GamesController < Api::ApiBaseController
   skip_before_action :check_access_token, only: [:index, :show]
 
   def index
-    @games = Game.where(active: true, playing: true)
+    @games = Game.filter(filtering_params)
   end
 
   def create
@@ -91,5 +91,9 @@ class Api::GamesController < Api::ApiBaseController
 
   def game_params
     params.require(:game).permit(:name, :field_id, :type, :duration)
+  end
+
+  def filtering_params
+    params.permit(:active, :playing)
   end
 end

@@ -31,6 +31,11 @@ class Game < ActiveRecord::Base
     self.team_a.count + self.team_b.count
   end
 
+  #Filterable
+  include Filterable
+  scope :active, -> (active) { where active: active }
+  scope :playing, -> (playing) { where playing: playing }
+
 protected
   def generate_pin
     begin
