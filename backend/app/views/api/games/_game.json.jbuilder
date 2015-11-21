@@ -8,7 +8,7 @@ json.team_a do
 
   json.players do
     json.array!(game.team_a.users) do |user|
-      json.extract! user, :id, :name, :ready, :alive
+      json.extract! user, :id, :name, :ready, :alive, :latitude, :longitude
     end
   end
 end
@@ -18,13 +18,13 @@ json.team_b do
 
   json.players do
     json.array!(game.team_b.users) do |user|
-      json.extract! user, :id, :name, :ready, :alive
+      json.extract! user, :id, :name, :ready, :alive, :latitude, :longitude
     end
   end
 end
 
 json.obstacles do
-  json.array(game.obstacles) do |obstacle|
+  json.array!(game.obstacles) do |obstacle|
     json.extract! obstacle, :latitude, :longitude, :type, :team_id
   end
 end
