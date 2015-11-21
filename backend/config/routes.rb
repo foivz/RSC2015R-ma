@@ -17,5 +17,13 @@ Rails.application.routes.draw do
       post :join, path: 'join', on: :collection
       put :start, path: 'start', on: :member
     end
+
+    resources :individual_messages, only: [:index, :inbox, :create] do
+      get :inbox, path: 'inbox', on: :collection
+    end
+
+    resources :team_messages, only: [:index, :inbox, :create] do
+      get :inbox, path: 'inbox', on: :collection
+    end
   end
 end
