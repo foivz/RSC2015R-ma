@@ -29,6 +29,7 @@ class Api::UsersController < Api::ApiBaseController
     end
 
     @user = User.new(permitted_params)
+    @user.role ||= :player # Default role
     if @user.save
       render :show, status: :created
     else
