@@ -4,6 +4,10 @@ json.total_count game.total_count
 json.joined_count game.joined_count
 json.alive_count game.alive_count
 
+json.field do
+  render_json_partial json, game.field
+end
+
 json.team_a do
   json.extract! game.team_a, :id, :name, :count, :score, :latitude, :longitude
 
