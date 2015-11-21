@@ -4,10 +4,10 @@ class Api::GamesController < Api::ApiBaseController
 
   before_action :set_game, only: [:show, :destroy, :ready, :start]
 
-  # skip_before_action :check_access_token
+  skip_before_action :check_access_token, only: [:index, :show]
 
   def index
-    @games = Game.all
+    @games = Game.where(active: true)
   end
 
   def create
@@ -79,7 +79,7 @@ class Api::GamesController < Api::ApiBaseController
     @game.team_a.destroy
     @game.team_b.destroy
 
-    @game.destroy
+    @game.update_attributes(active: false)
     render :show
   end
 
