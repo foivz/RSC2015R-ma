@@ -1,22 +1,23 @@
 @import 'mixins';
 @import 'colors';
+@import 'variables';
 
 .container {
   &__row {
     &--top {
-      height: 17vh;
+      height: $top-height;
       display: table;
       background-color: $primary-background-color;
     }
 
     &--bottom {
-      height: 83vh;
+      height: $bottom-height;
     }
   }
 }
 
 .angular-google-map-container {
-  height: 83vh;
+  height: $bottom-height;
 }
 
 .scoreboard {
@@ -136,7 +137,7 @@
   }
 
   &__counter {
-    height: 17vh;
+    height: $top-height;
     display: table;
     width: 100%;
   }
@@ -158,7 +159,7 @@
   margin: 0;
   padding: 0;
   display: block;
-  height: 83vh;
+  height: $bottom-height;
 
   &__item {
     font-size: 20px;

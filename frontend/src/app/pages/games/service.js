@@ -8,24 +8,7 @@ class GamesService {
 
   getGames() {
     if (this.config.mock === true) {
-      var games = [
-        {
-          name: 'testis',
-          id: 1
-        },
-        {
-          name: 'testis2',
-          id: 1
-        },
-        {
-          name: 'testis3',
-          id: 1
-        },
-        {
-          name: 'testis4',
-          id: 1
-        }
-      ];
+      var games = [this.mock.getData().game];
       return Promise.resolve(games);
     }
     return this.$http.get(this.config.apiUrl + '/games').then((data) => {

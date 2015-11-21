@@ -24,7 +24,12 @@ class MainController {
         latitude: latitude,
         longitude: longitude
       },
-      zoom: 19
+      zoom: 19,
+      options: {
+        disableDefaultUI: true,
+        draggable: false,
+        zoomControl: false
+      }
     };
 
     this.gmap.then((maps) => {

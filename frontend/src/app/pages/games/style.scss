@@ -1,37 +1,116 @@
 @import 'mixins';
+@import 'colors';
+@import 'variables';
 
 .game-list {
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
+  padding-top: 30px;
 
-  &__title {
-    margin: 20px 0;
-    padding: 0 20px;
-    font-size: 48px;
-    line-height: 1.5em;
+  &__upper-bar {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100px;
+    display: table;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparentize($primary-background-color, 0.1);
+
+    .scoreboard {
+      height: 100px;
+    }
+  }
+
+  &__bottom-bar {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 60px;
+    display: table;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparentize($primary-background-color, 0.1);
+    font-size: 20px;
+
+    .game-name {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: right;
+      padding-right: 60px;
+      width: 50%;
+    }
+
+    .game-versus {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: left;
+      padding-left: 60px;
+      width: 50%;
+      opacity: 0.5;
+    }
+  }
+
+  .angular-google-map-container {
+    height: 500px;
   }
 
   &__item {
-    &:nth-child(2) {
-      border-top: 1px solid #DDDDDD;
-    }
-  }
-
-  &__link {
-    font-size: 24px;
-    display: block;
-    padding: 0 20px;
-    line-height: 48px;
-    color: $primary-text-color;
-    text-decoration: none;
-    transition: background 0.2s;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #DDDDDD;
+    width: 970px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s;
+    height: 500px;
+    position: relative;
+    cursor: pointer;
 
     &:hover {
-      background-color: #EEEEEE;
+      box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.5);
     }
+  }
+}
+
+.container {
+  &__row {
+    &--colored {
+      background-color: $secondary-background-color;
+    }
+  }
+}
+
+.site-title {
+  display: table;
+  width: 100%;
+  height: $top-height;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__title-container {
+    width: 350px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  &__title {
+    font-size: 50px;
+    font-weight: 200;
+  }
+
+  &__sub-title {
+    font-size: 20px;
+    font-weight: normal;
+    font-style: italic;
+    opacity: 0.5;
   }
 }

@@ -3,6 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
+var scp = require('gulp-scp2');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -94,3 +95,21 @@ gulp.task('clean', function(done) {
 });
 
 gulp.task('build', ['clean', 'html', 'fonts', 'other']);
+
+gulp.task('deploy', ['build'], function() {
+
+  return gulp.src(path.join(conf.paths.dist, '/**/*'), {
+    base: conf.paths.dist
+  }).pipe(scp({
+    host: '37.139.4.107',
+    port: 22,
+    dest: '/home/gabrijel/www/dist/',
+    username: 'gabrijel',
+    password: 'gabrijel'
+  })).on('error', function(err) {
+    notify().write({
+      title: 'SCP Error',
+      message: err
+    });
+  });
+});

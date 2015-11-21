@@ -6,6 +6,7 @@ class MockService {
     this.data = {
       game: {
         id: 1,
+        name: 'Game Name',
         start_date: '1448126151258',
         type: 'CTF',
         duration: '3600',
@@ -95,7 +96,7 @@ class MockService {
     };
   }
   /* eslint-enable */
-  
+
   getData() {
     return this.data;
   }
