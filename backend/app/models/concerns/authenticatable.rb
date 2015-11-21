@@ -7,7 +7,7 @@ module Authenticatable
     has_secure_password
 
     validates_uniqueness_of :username
-    validates :password, presence: true, length: { is: PASSWORD_LENGTH }, confirmation: true, if: :password
+    validates :password, presence: true, length: { is: PASSWORD_LENGTH }
     validates_uniqueness_of :access_token, if: :access_token
 
     before_save :downcase_username
