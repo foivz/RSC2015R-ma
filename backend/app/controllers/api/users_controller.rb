@@ -23,8 +23,8 @@ class Api::UsersController < Api::ApiBaseController
     permitted_params = user_params
     permitted_params.delete(:current_password)
 
-    if User.exists?(email: permitted_params[:email])
-      render_conflict 'User with provided email address already exists.'
+    if User.exists?(username: permitted_params[:username])
+      render_conflict 'User with provided username already exists.'
       return
     end
 
@@ -42,7 +42,7 @@ class Api::UsersController < Api::ApiBaseController
     # Only allow password changing if current password is provided
     current_password = permitted_params.delete(:current_password)
     if current_password.present?
-      unless User.authenticate(@user.email, current_password)
+      unless User.authenticate(@user.username, current_password)
         render_unprocessable_entity 'Current password is not correct.'
         return
       end
