@@ -12,6 +12,10 @@ class MainService {
   getGame() {
     return this.game;
   }
+
+  getUpdatedGameData() {
+
+  }
 }
 
 export default MainService;

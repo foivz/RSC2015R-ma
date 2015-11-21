@@ -47,8 +47,26 @@ class GamesService {
             latitude: 51.219053,
             longitude: 4.404418
           },
-          zoom: 14
-        }
+          zoom: 20
+        },
+        players: [
+          {
+            id: 1,
+            position: {
+              latitude: 51.219053,
+              longitude: 4.404418
+            },
+            team: 1
+          },
+          {
+            id: 2,
+            position: {
+              latitude: 51.219053,
+              longitude: 4.404518
+            },
+            team: 2
+          }
+        ]
       };
 
       return Promise.resolve(game);

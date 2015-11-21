@@ -1,10 +1,15 @@
 <div class="container">
   <div class="container__column container__column--left">
     <div class="scoreboard">
-
+      <div class="scoreboard__team">{{main.teamScores.left}}</div>
+      <div class="scoreboard__divider">:</div>
+      <div class="scoreboard__team">{{main.teamScores.right}}</div>
     </div>
+    <clock start-date="Date.now()" duration="1000"></clock>
   </div>
   <section class="map container__column container__column--right">
-    <ui-gmap-google-map control="main.map" center="main.map.center" pan="false" zoom="main.map.zoom" options="options" refresh="main.map.shouldRefresh"></ui-gmap-google-map>
+    <ui-gmap-google-map control="main.map" center="main.map.center" pan="false" zoom="main.map.zoom" options="options" refresh="main.map.shouldRefresh">
+      <ui-gmap-marker ng-repeat="marker in main.markers track by $index" idKey='marker.id' coords='marker.getPosition()' control='marker'></ui-gmap-marker>
+    </ui-gmap-google-map>
   </section>
 </div>
