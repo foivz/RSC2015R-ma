@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy] do
       get :me, on: :collection
     end
+
+    resources :fields, only: [:index, :show, :create, :update, :destroy]
   end
 end
