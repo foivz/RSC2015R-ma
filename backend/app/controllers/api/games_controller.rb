@@ -2,10 +2,12 @@ class Api::GamesController < Api::ApiBaseController
   before_action { @field_name = :game }
   before_action(only: :index) { @field_name = :games }
 
+  before_action :set_game, only: [:show, :destroy, :ready, :start]
+
   # skip_before_action :check_access_token
 
   def index
-    Game.all
+    @games = Game.all
   end
 
   def create
@@ -38,12 +40,15 @@ class Api::GamesController < Api::ApiBaseController
     render :show, status: :created
   end
 
+  def show
+  end
+
   def join
     team_char = params[:team]
     pin = params[:pin]
     @game = Game.where(pin: pin).take
 
-    team = team_char == 'A' ? @game.team_a : @game.team_b
+    team = team_char.upcase == 'A' ? @game.team_a : @game.team_b
 
     player = User.find_by_id(@logged_in_user.id)
     player.update_attributes(game_id: @game.id, team_id: team.id, alive: true, ready: false)
@@ -51,11 +56,39 @@ class Api::GamesController < Api::ApiBaseController
     render :show
   end
 
-  def start
+  def ready
+    @game.update_attributes(players_in: true)
+    render :show
+  end
 
+  def start
+    @game.update_attributes(playing: true)
+    render :show
+  end
+
+  def destroy
+    # Release players
+    @game.team_a.users.each do |player|
+      player.update_attributes(game_id: nil, team_id: nil, ready: false)
+    end
+    @game.team_b.users.each do |player|
+      player.update_attributes(game_id: nil, team_id: nil, ready: false)
+    end
+
+    # Delete teams
+    @game.team_a.destroy
+    @game.team_b.destroy
+
+    @game.destroy
+    render :show
   end
 
   protected
+  def set_game
+    @game = Game.find_by_id(params[:id])
+    render_not_found('Game with specified id does not exist.') if @game.blank?
+  end
+
   def game_params
     params.require(:game).permit(:name, :field_id, :type, :duration)
   end
