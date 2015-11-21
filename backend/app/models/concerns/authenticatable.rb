@@ -7,7 +7,7 @@ module Authenticatable
     has_secure_password
 
     validates_uniqueness_of :username
-    validates :password, presence: true, length: { is: PASSWORD_LENGTH }
+    validates :password, presence: true, length: { is: PASSWORD_LENGTH }, if: :password
     validates_uniqueness_of :access_token, if: :access_token
 
     before_save :downcase_username
@@ -19,7 +19,7 @@ module Authenticatable
       nil
     end
 
-  protected
+    protected
     def generate_access_token
       begin
         self.access_token = SecureRandom.uuid
