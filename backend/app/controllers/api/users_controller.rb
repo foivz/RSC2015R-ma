@@ -2,7 +2,7 @@ class Api::UsersController < Api::ApiBaseController
   before_action { @field_name = :user }
   before_action(only: :index) { @field_name = :users }
 
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :update_location]
 
   skip_before_action :check_access_token, only: :create
 
@@ -59,6 +59,11 @@ class Api::UsersController < Api::ApiBaseController
     else
       render_save_error_for(@user)
     end
+  end
+
+  def update_location
+    @user.update_attributes(latitude: params[:latitude], longitude: params[:longitude])
+    render :show
   end
 
   def destroy
