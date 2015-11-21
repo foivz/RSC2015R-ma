@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="container__row container__row--top">
+    <div class="scoreboard">
+      <div class="scoreboard__teams">
+        <div class="scoreboard__team scoreboard__team--left">
+          <div class="scoreboard__team-container">
+            <span class="scoreboard__team-score">{{main.team.A.score}}</span>
+            <span class="scoreboard__team-name">{{main.team.A.name}}</span>
+          </div>
+        </div>
+        <div class="scoreboard__team scoreboard__team--right">
+          <div class="scoreboard__team-container">
+            <span class="scoreboard__team-score">{{main.team.B.score}}</span>
+            <span class="scoreboard__team-name">{{main.team.B.name}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="scoreboard__type">{{main.game.type}}</div>
+      <clock start-date="main.game.start_date" duration="main.game.duration"></clock>
+    </div>
+  </div>
+  <div class="players players--left">
+    <div class="players__counter">
+      <div class="players__counter-text">
+        <span class="players__counter-amount">{{main.team.A.alive}}</span>
+        <span class="players__counter-amount">/</span>
+        <span class="players__counter-amount">{{main.team.A.count}}</span>
+        <span class="players__counter-amount">players left</span>
+      </div>
+    </div>
+    <ul class="player-list">
+      <li class="player-list__item" ng-repeat="player in main.team.A.players" ng-class="player.isEliminated ? 'is-dead' : ''">
+        <div class="player-list__name">
+          {{player.name}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="players players--right">
+    <div class="players__counter">
+      <div class="players__counter-text">
+        <span class="players__counter-amount">{{main.team.B.alive}}</span>
+        <span class="players__counter-amount">/</span>
+        <span class="players__counter-amount">{{main.team.B.count}}</span>
+        <span class="players__counter-amount">players left</span>
+      </div>
+    </div>
+    <ul class="player-list">
+      <li class="player-list__item" ng-repeat="player in main.team.B.players" ng-class="player.isEliminated ? 'is-dead' : ''">
+        <div class="player-list__name">
+          {{player.name}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section class="map container__row container__row--bottom">
+    <ui-gmap-google-map control="main.map" center="main.map.center" zoom="main.map.zoom" options="main.map.options" refresh="main.map.shouldRefresh">
+      <ui-gmap-rectangle bounds='main.fieldBounds'
+        fill='{color: "#00FF00", opacity: "0.2"}'
+        stroke='{color: "#00FF00", opacity: "0.4"}'
+      >
+      </ui-gmap-rectangle>
+      <ui-gmap-marker ng-repeat="marker in main.markers track by $index" idKey='marker.id' coords='marker.getPosition()' control='marker'></ui-gmap-marker>
+    </ui-gmap-google-map>
+  </section>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="container__row container__row--top">
+    <div class="site-title">
+      <div class="site-title__container">
+        <div class="site-title__title-container">
+          <div class="site-title__title">FOI Paintball</div>
+          <div class="site-title__sub-title">Watch live paintball games!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container__row container__row--bottom container__row--colored">
+    <ul class="game-list">
+      <li class="game-list__item" ng-repeat="game in games.games track by $index" ng-click="games.onGameClick(game)">
+        <div class="game-list__upper-bar">
+          <div class="scoreboard">
+            <div class="scoreboard__teams">
+              <div class="scoreboard__team scoreboard__team--left">
+                <div class="scoreboard__team-container">
+                  <span class="scoreboard__team-score">{{game.team.A.score}}</span>
+                  <span class="scoreboard__team-name">{{game.team.A.name}}</span>
+                </div>
+              </div>
+              <div class="scoreboard__team scoreboard__team--right">
+                <div class="scoreboard__team-container">
+                  <span class="scoreboard__team-score">{{game.team.B.score}}</span>
+                  <span class="scoreboard__team-name">{{game.team.B.name}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="scoreboard__type">{{game.type}}</div>
+            <clock start-date="game.start_date" duration="game.duration"></clock>
+          </div>
+        </div>
+        <ui-gmap-google-map control="game.map" center="game.map.center" zoom="game.map.zoom" options="game.map.options"></ui-gmap-google-map>
+        <div class="game-list__bottom-bar">
+          <div class="game-name">
+            {{game.name}}
+          </div>
+          <div class="game-versus">
+            <span>{{game.team.A.count}}</span>
+            vs
+            <span>{{game.team.B.count}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

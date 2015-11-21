@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'mixins';
+
+body {
+  color: $primary-text-color;
+}
+
+.container {
+  @include clearfix();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+  &__column {
+    float: left;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__row {
+    width: 100%;
+    height: 100vh;
+  }
+}
