@@ -1,7 +1,12 @@
 class MainController {
-  constructor() {
+  constructor(mainService, uiGmapGoogleMapApi) {
     'ngInject';
+    this.game = mainService.getGame();
+    this.map = this.game.field;
 
+    uiGmapGoogleMapApi.then(() => {
+      
+    });
   }
 }
 

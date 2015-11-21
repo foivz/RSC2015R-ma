@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="container__column">
+    <ul class="game-list">
+      <li class="game-list__title">Game list</li>
+      <li class="game-list__item" ng-repeat="game in games.games track by $index">
+        <a ng-click="games.onGameClick(game)" class="game-list__link">
+          <div class="game-list__link-name">
+            {{game.name}}
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

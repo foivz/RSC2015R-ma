@@ -2,14 +2,14 @@ class ConfigService {
   constructor() {
     'ngInject';
 
-    this.$http = $http;
     this.data = {
-      apiUrl: 'http://37.139.4.107:3000/api'
+      mock: true,
       
+      apiUrl: 'http://37.139.4.107:3000/api'
     };
   }
 
-  getDat() {
+  getData() {
     return this.data;
   }
 }
