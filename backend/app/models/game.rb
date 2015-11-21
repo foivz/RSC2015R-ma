@@ -18,8 +18,12 @@ class Game < ActiveRecord::Base
   # Obstacles
   has_many :obstacles
 
-  def current_count
+  def joined_count
     User.where(game_id: self.id).length
+  end
+
+  def alive_count
+    User.where(game_id: self.id, alive: true).length
   end
 
   def total_count

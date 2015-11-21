@@ -1,7 +1,8 @@
-json.extract! game, :id, :name, :duration, :type, :pin, :start_date, :judge_id, :created_at, :updated_at
+json.extract! game, :id, :name, :duration, :type, :pin, :start_date, :judge_id, :players_in, :playing, :created_at, :updated_at
 
 json.total_count game.total_count
-json.current_count game.current_count
+json.joined_count game.joined_count
+json.alive_count game.alive_count
 
 json.team_a do
   json.extract! game.team_a, :id, :name, :count, :score, :latitude, :longitude

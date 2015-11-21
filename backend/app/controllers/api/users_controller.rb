@@ -2,7 +2,7 @@ class Api::UsersController < Api::ApiBaseController
   before_action { @field_name = :user }
   before_action(only: :index) { @field_name = :users }
 
-  before_action :set_user, only: [:show, :update, :destroy, :update_location]
+  before_action :set_user, only: [:show, :update, :destroy, :update_location, :ready, :kill]
 
   skip_before_action :check_access_token, only: :create
 
@@ -68,6 +68,16 @@ class Api::UsersController < Api::ApiBaseController
 
   def destroy
     @user.destroy
+    render :show
+  end
+
+  def ready
+    @user.update_attributes(ready: true)
+    render :show
+  end
+
+  def kill
+    @user.update_attributes(alive: false)
     render :show
   end
 
