@@ -37,6 +37,10 @@ gem 'unicorn'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Setting up Ruby objects as test data
+  gem 'factory_girl_rails', '~> 4.5.0'
+  # Generate fake data
+  gem 'faker', '~> 1.5.0'
 end
 
 group :development do
