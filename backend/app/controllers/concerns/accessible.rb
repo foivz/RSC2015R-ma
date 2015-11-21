@@ -16,7 +16,7 @@ private
       return
     end
 
-    user = User.find_by(access_id_header)
+    user = User.find_by_id(access_id_header)
     if user.blank? || user.inactive? || user.access_token != access_token_header
       render_unauthorized('Invalid access token provided.')
     else
