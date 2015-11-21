@@ -1,11 +1,11 @@
 <div class="container">
   <div class="container__column container__column--left">
     <div class="scoreboard">
-      <div class="scoreboard__team">{{main.team.left.score}}</div>
+      <div class="scoreboard__team">{{main.team.A.score}}</div>
       <div class="scoreboard__divider">:</div>
-      <div class="scoreboard__team">{{main.team.right.score}}</div>
+      <div class="scoreboard__team">{{main.team.B.score}}</div>
     </div>
-    <clock start-date="1448121793032" duration="3600"></clock>
+    <clock start-date="main.game.startDate" duration="main.game.duration"></clock>
     <div class="players">
       <ul class="player-list">
         <li class="player-list__item" ng-repeat="player in main.team.left.players">

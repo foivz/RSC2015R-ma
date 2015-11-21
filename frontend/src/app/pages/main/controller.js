@@ -6,65 +6,110 @@ class MainController {
     this.$scope = $scope;
     this.game = mainService.getGame();
     this.updaterService = updaterService;
-    this.map = this.game.field;
-    this.setTeams();
+    this.gmap = uiGmapGoogleMapApi;
+
+    this.setMapInformation();
+    this.setTeamsAndPlayers();
     this.setAllMarkers();
 
     this.updaterService.startUpdates(this.update, this);
+  }
 
-    uiGmapGoogleMapApi.then(() => {});
+  setMapInformation() {
+    var latitude = (this.game.field.latitudeNw + this.game.field.latitudeSe) / 2;
+    var longitude = (this.game.field.longitudeNw + this.game.field.longitudeSe) / 2;
+
+    this.map = {
+      center: {
+        latitude: latitude,
+        longitude: longitude
+      },
+      zoom: 19
+    };
+
+    this.gmap.then((maps) => {
+      setTimeout(() => {
+        var map = this.map.getGMap();
+        var bounds = new maps.LatLngBounds({
+          lat: this.game.field.latitudeNw,
+          lng: this.game.field.longitudeNw
+        }, {
+          lat: this.game.field.latitudeSe,
+          lng: this.game.field.longitudeSe
+        });
+        map.fitBounds(bounds);
+      }, 300);
+    });
   }
 
   setAllMarkers() {
     this.markers = [];
-
-    this.players = this.game.players.map((el) => {
-      var x = new Player(el.id, el.position, el.team);
-      if (el.team === 1) {
-        this.team.left.players.push(x);
-      } else {
-        this.team.right.players.push(x);
-      }
-      return x;
-    });
-
     this.markers = this.markers.concat(this.players);
   }
 
-  setTeams() {
+  setTeamsAndPlayers() {
+    this.players = [];
+    let teamA = this.game.teamA;
+    let teamB = this.game.teamB;
+    let teamAPlayers = this.game.teamA.players.map((el) => {
+      var x = new Player(el.id, {
+        latitude: el.latitude,
+        longitude: el.longitude
+      }, teamA.name, el.name);
+      this.players.push(x);
+      return x;
+    });
+    let teamBPlayers = this.game.teamB.players.map((el) => {
+      var x = new Player(el.id, {
+        latitude: el.latitude,
+        longitude: el.longitude
+      }, teamB.name, el.name);
+      this.players.push(x);
+      return x;
+    });
+
     this.team = {
-      left: {
-        players: [],
-        score: 0
+      A: {
+        position: {
+          latitude: teamA.latitude,
+          longitude: teamA.longitude
+        },
+        players: teamAPlayers,
+        score: teamA.score
       },
-      right: {
-        players: [],
-        score: 0
+      B: {
+        position: {
+          latitude: teamB.latitude,
+          longitude: teamB.longitude
+        },
+        players: teamBPlayers,
+        score: teamB.score
       }
     };
   }
 
   update(data) {
-    this.updatePlayers(data.players);
-    this.updateScores(data.scoreA, data.scoreB);
+    this.updatePlayers(data);
+    this.updateScores(data);
 
     //get new data
     this.refreshMap();
   }
 
-  updatePlayers(players) {
-    players.forEach((el) => {
-      this.players.filter((p) => {
-        if (p.id === el.id) {
-          p.setPosition(el.position);
-        }
-      });
-    });
+  updatePlayers(data) {
+
+    // players.forEach((el) => {
+    //   this.players.filter((p) => {
+    //     if (p.id === el.id) {
+    //       p.setPosition(el.position);
+    //     }
+    //   });
+    // });
   }
 
-  updateScores(a, b) {
-    this.team.left.score = a;
-    this.team.right.score = b;
+  updateScores(data) {
+    this.team.A.score = data.teamA.score;
+    this.team.B.score = data.teamB.score;
   }
 
   refreshMap() {
