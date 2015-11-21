@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post :login, :logout
 
       resources :users, only: [:index, :show, :create, :update, :destroy] do
-        GET :me, on: :collection
+        get :me, on: :collection
       end
     end
   end
