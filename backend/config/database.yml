@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: rails
+
+development:
+  <<: *default
+  database: paintball_develop
+  password: oSgRNFVn1Y
+
+test:
+  <<: *default
+  database: paintball_test
+  password: oSgRNFVn1Y
+
+production:
+  <<: *default
+  database: paintball_production
+  database: <%= ENV['APP_DATABASE_PASSWORD'] %>

@@ -1,0 +1,7 @@
+request:
+  headers:
+    access_id: 'X-AccessId'
+    access_token: 'X-AccessToken'
+
+api:
+  path: 'api'
