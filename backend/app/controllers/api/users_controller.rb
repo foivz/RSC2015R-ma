@@ -4,6 +4,8 @@ class Api::UsersController < Api::ApiBaseController
 
   before_action :set_user, only: [:show, :update, :destroy]
 
+  skip_before_action :check_access_token, only: :create
+
   def index
     @users = User.filter(filtering_params)
   end
