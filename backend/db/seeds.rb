@@ -5,3 +5,6 @@ require 'factory_girl_rails'
 (1..10).each do
   FactoryGirl.create(:user)
 end
+
+FactoryGirl.create(:user, name: 'Dinko Osrecki', username: 'dinko', password: '1234', role: :player)
+FactoryGirl.create(:user, name: 'Gabrijel Mrgan', username: 'gabrijel', password: '1234', role: :player)
