@@ -161,6 +161,9 @@ class MainController {
   }
 
   update(data) {
+    if (data.won) {
+      this.game.won = data.won.toUpperCase();
+    }
     this.updatePlayers(data);
     this.updateScores(data);
 
