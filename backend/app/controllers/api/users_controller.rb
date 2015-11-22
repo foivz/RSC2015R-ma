@@ -2,7 +2,7 @@ class Api::UsersController < Api::ApiBaseController
   before_action { @field_name = :user }
   before_action(only: :index) { @field_name = :users }
 
-  before_action :set_user, only: [:show, :update, :destroy, :update_location, :ready, :kill]
+  before_action :set_user, only: [:show, :update, :destroy, :update_location, :ready, :kill, :capture]
 
   skip_before_action :check_access_token, only: [:index, :create, :show]
 
@@ -97,6 +97,7 @@ class Api::UsersController < Api::ApiBaseController
     this_team = Team.find_by_id(@user.team_id)
     if this_team.alive_count == 0
       game.playing = false
+      game.won = opponent_team.name
 
       this_team.users.each do |player|
         statistic = UserStatistic.where(user_id: player.id, game_id: game.id).take
@@ -118,6 +119,48 @@ class Api::UsersController < Api::ApiBaseController
     end
 
     render :show
+  end
+
+  def capture
+    if Obstacle.exists?(pin: params[:pin])
+      game = @user.game
+
+      this_team = @user.team
+      opponent_team = game.team_a.id == @user.team_id ? game.team_b : game.team_a
+
+      # Update team scores
+      this_team.score = 1
+      this_team.save
+
+      opponent_team.score = 0
+      opponent_team.save
+
+      # Update game state
+      game.playing = false
+      game.won = this_team.name
+
+      # Update statistics
+      duration_alive = ((DateTime.now - game.start_date.to_datetime) * 24 * 60 * 60).to_i
+      this_team.users.each do |player|
+        if player.alive
+          UserStatistic.create(user_id: player.id, game_id: game.id, died: false, duration_alive: duration_alive, won: true)
+        else
+          statistic = UserStatistic.where(user_id: player.id, game_id: game.id).take
+          statistic.won = true
+          statistic.save
+        end
+      end
+
+      opponent_team.users.each do |player|
+        if player.alive
+          UserStatistic.create(user_id: player.id, game_id: game.id, died: false, duration_alive: duration_alive, won: false)
+        else
+          statistic = UserStatistic.where(user_id: player.id, game_id: game.id).take
+          statistic.won = false
+          statistic.save
+        end
+      end
+    end
   end
 
   private
