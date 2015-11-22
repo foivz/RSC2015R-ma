@@ -3,6 +3,7 @@ json.extract! game, :id, :name, :duration, :type, :pin, :start_date, :judge_id, 
 json.total_count game.total_count
 json.joined_count game.joined_count
 json.alive_count game.alive_count
+json.dead_count game.dead_count
 
 json.field do
   render_json_partial json, game.field

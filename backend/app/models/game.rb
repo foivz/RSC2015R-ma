@@ -31,6 +31,10 @@ class Game < ActiveRecord::Base
     self.team_a.count + self.team_b.count
   end
 
+  def dead_count
+    self.total_count - self.alive_count
+  end
+
   #Filterable
   include Filterable
   scope :active, -> (active) { where active: active }
