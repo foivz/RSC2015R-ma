@@ -25,10 +25,9 @@ class Api::TeamMessagesController < Api::ApiBaseController
     team_message[:user_id] = @logged_in_user.id
 
     team = team_message[:team]
-    team_message.delete(:team)
     game = @logged_in_user.game
-    # team_message[:team_id] = team == 'a' ? game.team_a.id : game.team_b.id
-    team_message[:team_id] = 91
+    team_message[:team_id] = (team == 'a') ? game.team_a.id : game.team_b.id
+    team_message.delete(:team)
 
     if team_message[:type].present?
       team_message[:message] = PREDEFINED_MESSAGES[team_message[:type].to_sym]
