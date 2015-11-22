@@ -11,5 +11,12 @@ require 'factory_girl_rails'
 # FactoryGirl.create(:user, name: 'Gabrijel Mrgan', username: 'gabrijel', password: '1234', role: :player)
 
 # Fields
-FactoryGirl.create(:field)
-FactoryGirl.create(:field, name: 'Field 2', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+# FactoryGirl.create(:field)
+# FactoryGirl.create(:field, name: 'Field 2', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 3', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 4', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 5', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 6', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 7', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 8', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
+FactoryGirl.create(:field, name: 'Field 9', latitude_nw: '46.308563', longitude_nw: '16.337690', latitude_se: '46.307804', longitude_se: '16.338085')
