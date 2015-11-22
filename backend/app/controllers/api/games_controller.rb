@@ -66,7 +66,7 @@ class Api::GamesController < Api::ApiBaseController
   end
 
   def start
-    @game.update_attributes(playing: true, start_date: Date.now)
+    @game.update_attributes(playing: true, start_date: DateTime.now)
     render :show
   end
 
