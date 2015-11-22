@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :me, on: :collection
       post :ready, path: 'ready', on: :member
       post :kill, path: 'kill', on: :member
+      post :capture, path: 'capture', on: :member
       post :update_location, path: 'location', on: :member
     end
 
