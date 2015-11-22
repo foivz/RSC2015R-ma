@@ -26,7 +26,7 @@ class Api::GamesController < Api::ApiBaseController
 
     # Game
     game_data = params
-    @game = Game.create(name: game_data[:name], field_id: game_data[:field_id], type: game_data[:type], duration: game_data[:duration],
+    @game = Game.create(name: game_data[:name], field_id: game_data[:field_id], type: game_data[:type], duration: game_data[:duration] * 60,
       judge_id: @logged_in_user.id, team_a_id: team_a.id, team_b_id: team_b.id)
 
     # Obstacles
