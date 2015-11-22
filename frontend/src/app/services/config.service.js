@@ -5,7 +5,7 @@ class ConfigService {
     this.data = {
       mock: false,
 
-      updateTime: 1000,
+      updateTime: 100000,
       apiUrl: 'http://37.139.4.107:3000/api'
     };
   }

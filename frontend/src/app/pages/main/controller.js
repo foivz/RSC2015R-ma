@@ -165,7 +165,7 @@ class MainController {
     if (this.map.refresh) {
       this.map.refresh();
     }
-    
+
     if (!this.$scope.$$phase) {
       this.$scope.$apply();
     }

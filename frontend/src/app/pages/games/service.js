@@ -25,10 +25,13 @@ class GamesService {
 
   getGameData(g) {
     if (this.config.mock === true) {
-      return Promise.resolve(this.parseGameData(this.mock.getData()));
+      return Promise.resolve(this.parseGameData({
+        data: this.mock.getData()
+      }));
     }
 
     return this.$http.get(this.config.apiUrl + '/games/' + g.id).then((data) => {
+      debugger;
       return this.parseGameData(data);
     }).catch((e) => {
       throw new Error(e);
