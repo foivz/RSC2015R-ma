@@ -7,7 +7,7 @@ class Api::GamesController < Api::ApiBaseController
   skip_before_action :check_access_token, only: [:index, :show]
 
   def index
-    @games = Game.filter(filtering_params)
+    @games = Game.filter(filtering_params).order(created_at: :desc)
   end
 
   def create
