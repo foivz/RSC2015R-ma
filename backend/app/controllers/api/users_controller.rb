@@ -77,7 +77,7 @@ class Api::UsersController < Api::ApiBaseController
   end
 
   def kill
-    @user.update_attributes(alive: false)
+    @user.update_attributes(alive: false, ready: false)
 
     # Send killed message
     TeamMessage.create(user_id: @user.id, team_id: @user.team_id, message: killed_message)
