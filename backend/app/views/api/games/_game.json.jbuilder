@@ -4,6 +4,7 @@ json.total_count game.total_count
 json.joined_count game.joined_count
 json.alive_count game.alive_count
 json.dead_count game.dead_count
+json.won game.won
 
 json.field do
   render_json_partial json, game.field
@@ -35,6 +36,6 @@ end
 
 json.obstacles do
   json.array!(game.obstacles) do |obstacle|
-    json.extract! obstacle, :id, :latitude, :longitude, :type
+    json.extract! obstacle, :id, :latitude, :longitude, :type, :pin
   end
 end
