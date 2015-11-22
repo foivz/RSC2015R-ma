@@ -16,4 +16,13 @@ if user.has_statistics
     json.win_count user.win_count
     json.loss_count user.loss_count
   end
+else
+  json.statistics do
+    json.min_duration 0
+    json.max_duration 0
+    json.avg_duration 0
+    json.death_count 0
+    json.win_count 0
+    json.loss_count 0
+  end
 end
