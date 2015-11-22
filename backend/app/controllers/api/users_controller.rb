@@ -4,7 +4,7 @@ class Api::UsersController < Api::ApiBaseController
 
   before_action :set_user, only: [:show, :update, :destroy, :update_location, :ready, :kill]
 
-  skip_before_action :check_access_token, only: :create
+  skip_before_action :check_access_token, only: [:index, :create, :show]
 
   def index
     @users = User.filter(filtering_params)
@@ -77,7 +77,25 @@ class Api::UsersController < Api::ApiBaseController
   end
 
   def kill
-    @user.update_attributes(alive: false)
+    @user.update_attributes(alive: false, ready: false)
+
+    # Send killed message
+    TeamMessage.create(user_id: @user.id, team_id: @user.team_id, message: killed_message)
+
+    # Update opponent team's score
+    game = Game.find_by_id(@user.game_id)
+    opponent_team = game.team_a.id == @user.team_id ? game.team_b : game.team_a
+
+    opponent_team.score += 1
+    opponent_team.save
+
+    # Is game over?
+    this_team = Team.find_by_id(@user.team_id)
+    if this_team.alive_count == 0
+      game.playing = false
+      game.save
+    end
+
     render :show
   end
 
@@ -93,5 +111,9 @@ class Api::UsersController < Api::ApiBaseController
   def set_user
     @user = User.find_by_id(params[:id])
     render_not_found('User with specified id does not exist.') if @user.blank?
+  end
+
+  def killed_message
+    "#{@user.name} has been killed!"
   end
 end

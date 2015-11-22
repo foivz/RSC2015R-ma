@@ -26,18 +26,13 @@ class Api::GamesController < Api::ApiBaseController
 
     # Game
     game_data = params
-    @game = Game.create(name: game_data[:name], field_id: game_data[:field_id], type: game_data[:type], duration: game_data[:duration],
+    @game = Game.create(name: game_data[:name], field_id: game_data[:field_id], type: game_data[:type], duration: game_data[:duration] * 60,
       judge_id: @logged_in_user.id, team_a_id: team_a.id, team_b_id: team_b.id)
 
     # Obstacles
     obstacles_data = params[:obstacles]
     obstacles_data.each do |obstacle_data|
-      obstacle_data[:team].tap do |team|
-        obstacle_data[:team_id] = team_a.id if team == 'A'
-        obstacle_data[:team_id] = team_b.id if team == 'B'
-      end
-
-      Obstacle.create(game_id: @game.id, team_id: obstacle_data[:team_id], type: obstacle_data[:type],
+      Obstacle.create(game_id: @game.id, type: obstacle_data[:type],
         latitude: obstacle_data[:latitude], longitude: obstacle_data[:longitude])
     end
 
@@ -66,7 +61,7 @@ class Api::GamesController < Api::ApiBaseController
   end
 
   def start
-    @game.update_attributes(playing: true, start_date: Date.now)
+    @game.update_attributes(playing: true, start_date: DateTime.now)
     render :show
   end
 
@@ -83,10 +78,10 @@ class Api::GamesController < Api::ApiBaseController
     Field.update(@game.field_id, occupied: false)
 
     # Delete teams
-    @game.team_a.destroy
-    @game.team_b.destroy
+    @game.team_a.update_attributes(active: false)
+    @game.team_b.update_attributes(active: false)
 
-    @game.update_attributes(active: false)
+    @game.update_attributes(active: false, playing: false, players_in: false)
     render :show
   end
 
