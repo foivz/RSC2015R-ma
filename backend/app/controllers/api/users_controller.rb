@@ -82,6 +82,20 @@ class Api::UsersController < Api::ApiBaseController
     # Send killed message
     TeamMessage.create(user_id: @user.id, team_id: @user.team_id, message: killed_message)
 
+    # Update opponent team's score
+    game = Game.find_by_id(@user.game_id)
+    opponent_team = game.team_a.id == @user.team_id ? game.team_b : game.team_a
+
+    opponent_team.score += 1
+    opponent_team.save
+
+    # Is game over?
+    this_team = Team.find_by_id(@user.team_id)
+    if this_team.alive_count == 0
+      game.playing = false
+      game.save
+    end
+
     render :show
   end
 
