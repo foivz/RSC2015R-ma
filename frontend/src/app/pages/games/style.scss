@@ -77,12 +77,17 @@
 
 .container {
   &--games {
+    .container__row--top {
+      background-color: #FA8B02;
+      color: #FFFFFF;
+    }
+
     .container__row--bottom {
       height: auto;
       min-height: $bottom-height;
     }
   }
-  
+
   &__row {
     &--colored {
       background-color: $secondary-background-color;
@@ -105,9 +110,16 @@
   }
 
   &__title-container {
-    width: 350px;
+    width: 450px;
     margin: 0 auto;
     text-align: left;
+    padding-left: 100px;
+    background: {
+      image: url('/assets/images/logo_header.png');
+      position: left 25px top 50%;
+      repeat: no-repeat;
+    }
+    -webkit-font-smoothing: antialiased;
   }
 
   &__title {

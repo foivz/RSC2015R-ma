@@ -36,6 +36,15 @@
       </li>
     </ul>
   </div>
+  <div class="players players--details" ng-show="main.game.won">
+    <div class="game-over-container">
+      <div class="game-over-data">
+        <div class="game-over">Game over!</div>
+        <div class="game-won" ng-class="main.game.won">Team {{main.game.won}} has won!</div>
+      </div>
+    </div>
+  </div>
+
   <div class="players players--details" ng-show="main.curPlayer">
     <div class="player-data" ng-class="main.curPlayer.team">
       <div class="player-data__title">{{main.curPlayer.name}}'s stats</div>

@@ -161,6 +161,9 @@ class MainController {
   }
 
   update(data) {
+    if (data.won) {
+      this.game.won = data.won.toUpperCase();
+    }
     this.updatePlayers(data);
     this.updateScores(data);
 
@@ -179,6 +182,8 @@ class MainController {
           if (!p.alive) {
             el.eliminate();
           }
+
+          el.player = p;
         }
       });
       data.team_b.players.forEach((p) => {
@@ -191,7 +196,10 @@ class MainController {
           if (!p.alive) {
             el.eliminate();
           }
+          
+          el.player = p;
         }
+
       });
     });
 
