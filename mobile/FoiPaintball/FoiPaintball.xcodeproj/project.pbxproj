@@ -36,6 +36,9 @@
 		438048741C011FC100E0EEF8 /* GameReadyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048731C011FC100E0EEF8 /* GameReadyViewController.m */; };
 		438048771C01220200E0EEF8 /* GameReadyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048761C01220200E0EEF8 /* GameReadyTableViewCell.m */; };
 		4380487A1C01248E00E0EEF8 /* APIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048791C01248E00E0EEF8 /* APIPlayer.m */; };
+		438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048801C013A2A00E0EEF8 /* PlayGameViewController.m */; };
+		438048851C01423C00E0EEF8 /* IntroPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048841C01423C00E0EEF8 /* IntroPlayerViewController.m */; };
+		438048881C0143E600E0EEF8 /* APIJoinGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048871C0143E600E0EEF8 /* APIJoinGame.m */; };
 		C888254D123B57A7F81F65B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C0C09C55479FAD3FA9165F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,12 @@
 		438048761C01220200E0EEF8 /* GameReadyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameReadyTableViewCell.m; sourceTree = "<group>"; };
 		438048781C01248E00E0EEF8 /* APIPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPlayer.h; sourceTree = "<group>"; };
 		438048791C01248E00E0EEF8 /* APIPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIPlayer.m; sourceTree = "<group>"; };
+		4380487F1C013A2A00E0EEF8 /* PlayGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayGameViewController.h; sourceTree = "<group>"; };
+		438048801C013A2A00E0EEF8 /* PlayGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayGameViewController.m; sourceTree = "<group>"; };
+		438048831C01423C00E0EEF8 /* IntroPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPlayerViewController.h; sourceTree = "<group>"; };
+		438048841C01423C00E0EEF8 /* IntroPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPlayerViewController.m; sourceTree = "<group>"; };
+		438048861C0143E600E0EEF8 /* APIJoinGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIJoinGame.h; sourceTree = "<group>"; };
+		438048871C0143E600E0EEF8 /* APIJoinGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIJoinGame.m; sourceTree = "<group>"; };
 		897B50E8E616024860B32014 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3004BA700C0D4F8B8C6214F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,6 +278,8 @@
 				4380486F1C00FC6500E0EEF8 /* APIField.m */,
 				438048781C01248E00E0EEF8 /* APIPlayer.h */,
 				438048791C01248E00E0EEF8 /* APIPlayer.m */,
+				438048861C0143E600E0EEF8 /* APIJoinGame.h */,
+				438048871C0143E600E0EEF8 /* APIJoinGame.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +290,8 @@
 				436DCF611C00CF5C0036D7BA /* Create New Game */,
 				438048611C00E33100E0EEF8 /* Map Create */,
 				438048711C011FB100E0EEF8 /* Game Ready */,
+				4380487B1C01392000E0EEF8 /* Play Game */,
+				438048821C01422E00E0EEF8 /* Intro Player */,
 				436DCF5B1C00CE9E0036D7BA /* NewGame.storyboard */,
 				4380485D1C00D96B00E0EEF8 /* GameWireframe.h */,
 				4380485E1C00D96B00E0EEF8 /* GameWireframe.m */,
@@ -315,6 +328,24 @@
 				438048761C01220200E0EEF8 /* GameReadyTableViewCell.m */,
 			);
 			path = "Game Ready";
+			sourceTree = "<group>";
+		};
+		4380487B1C01392000E0EEF8 /* Play Game */ = {
+			isa = PBXGroup;
+			children = (
+				4380487F1C013A2A00E0EEF8 /* PlayGameViewController.h */,
+				438048801C013A2A00E0EEF8 /* PlayGameViewController.m */,
+			);
+			path = "Play Game";
+			sourceTree = "<group>";
+		};
+		438048821C01422E00E0EEF8 /* Intro Player */ = {
+			isa = PBXGroup;
+			children = (
+				438048831C01423C00E0EEF8 /* IntroPlayerViewController.h */,
+				438048841C01423C00E0EEF8 /* IntroPlayerViewController.m */,
+			);
+			path = "Intro Player";
 			sourceTree = "<group>";
 		};
 		DCA04863E08F62635AEB8D2C /* Frameworks */ = {
@@ -465,6 +496,7 @@
 				438048671C00E73800E0EEF8 /* MyLocation.m in Sources */,
 				430E83981C00926300F072A8 /* PaintBallApp.m in Sources */,
 				430E83C11C00AE0600F072A8 /* APIRegister.m in Sources */,
+				438048851C01423C00E0EEF8 /* IntroPlayerViewController.m in Sources */,
 				430E83801C008D0B00F072A8 /* AppDelegate.m in Sources */,
 				430E83B41C009F6200F072A8 /* LoginViewController.m in Sources */,
 				438048701C00FC6500E0EEF8 /* APIField.m in Sources */,
@@ -474,9 +506,11 @@
 				430E83A91C009E3900F072A8 /* OnboardingWireframe.m in Sources */,
 				430E83BE1C00AD9800F072A8 /* APILogin.m in Sources */,
 				430E83B71C009F7200F072A8 /* RegisterViewController.m in Sources */,
+				438048881C0143E600E0EEF8 /* APIJoinGame.m in Sources */,
 				438048741C011FC100E0EEF8 /* GameReadyViewController.m in Sources */,
 				4380486D1C00F52700E0EEF8 /* APILocation.m in Sources */,
 				430E83CA1C00B78300F072A8 /* APIUserRegister.m in Sources */,
+				438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */,
 				430E83C71C00AE4B00F072A8 /* APILoginResult.m in Sources */,
 				4380487A1C01248E00E0EEF8 /* APIPlayer.m in Sources */,
 				436DCF641C00CF740036D7BA /* CreateNewGameViewController.m in Sources */,

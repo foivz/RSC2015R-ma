@@ -16,12 +16,14 @@
 #import "APIUserRegister.h"
 #import "APIField.h"
 #import "APIGame.h"
+#import "APIJoinGame.h"
 
 @interface APIManager : NSObject
 @property (strong, nonatomic) APIUser *user;
 + (instancetype)sharedInstance;
 
 @property (strong, nonatomic) APIGame *currentGame;
+@property (strong, nonatomic) NSString *myTeam;
 
 - (void)registerWithAPIregister:(APIRegister *)apiRegister withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 
@@ -31,8 +33,13 @@
 - (void)fieldsWithSuccess:(void (^)(NSArray *))success failure:(void (^)(NSString *))failure;
 - (void)createGameWithGame:(APIGame *)apiGame success:(void (^)(APIGame *))success failure:(void (^)(BOOL))failure;
 
-- (void)playersInWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+- (void)playersAreReadyInWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+
+- (void)startGameWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 
 - (void)refreshGameWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+- (void)joinGameWithAPIJoinGame:(APIJoinGame *)joinGame success:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 
+- (void)playerIsReadyWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+- (void)postLocation;
 @end

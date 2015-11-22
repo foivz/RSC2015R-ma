@@ -40,7 +40,7 @@
     zoomLocation.longitude= self.field.centerLongitude;
     
     // 2
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.3*METERS_PER_MILE, 0.3*METERS_PER_MILE);
     
     // 3
     [_mapView setRegion:viewRegion animated:YES];
@@ -56,7 +56,15 @@
 - (IBAction)valueChangedOnSegemnt:(UISegmentedControl *)sender {
     UIImage *image = nil;
     if (sender.selectedSegmentIndex == 0) {
-        image = [UIImage imageNamed:@"pin_start"];
+        if (self.game.team_a && self.game.team_b) {
+
+        } else if (self.game.team_a == nil) {
+            image = [UIImage imageNamed:@"pin_flag_a"];
+            
+        } else {
+            image = [UIImage imageNamed:@"pin_flag_b"];
+        }
+        
     } else if (sender.selectedSegmentIndex == 1) {
         image = [UIImage imageNamed:@"pin_flag"];
     } else {
@@ -103,7 +111,7 @@
     point.title = @"Where am I?";
     point.subtitle = @"I'm here!!!";
     
-    [self.mapView addAnnotation:point];
+   // [self.mapView addAnnotation:point];
 }
 
 - (IBAction)addPoiButton:(UIButton *)sender {
@@ -130,18 +138,22 @@
             self.game.team_b = apiLocation;
         }
         
+        
     }
 
     
     if (self.segmentControl.selectedSegmentIndex == 1) {
         location = [[MyLocation alloc] initWithName:@"Flag" address:@"" coordinate:centerLocation];
         apiLocation.type = @"flag";
-    } else {
+        [self.pois addObject:apiLocation];
+    } else if (self.segmentControl.selectedSegmentIndex == 2) {
         location = [[MyLocation alloc] initWithName:@"Obstacle" address:@"" coordinate:centerLocation];
         apiLocation.type = @"obstacle";
+        
+        [self.pois addObject:apiLocation];
     }
     
-    [self.pois addObject:apiLocation];
+    
     
     location.image = self.centerImage.image;
     
@@ -155,6 +167,19 @@
             self.centerImage.transform = CGAffineTransformIdentity;
         }];
     }];
+    
+    if (self.segmentControl.selectedSegmentIndex == 0) {
+        UIImage *image = nil;
+        if (self.game.team_a && self.game.team_b) {
+            
+        } else if (self.game.team_a == nil) {
+            image = [UIImage imageNamed:@"pin_flag_a"];
+            
+        } else {
+            image = [UIImage imageNamed:@"pin_flag_b"];
+        }
+        self.centerImage.image = image;
+    }
 }
 
 - (IBAction)nextButtonClicked:(UIBarButtonItem *)sender {

@@ -39,9 +39,7 @@
         
         [self.passwordTextField resignFirstResponder];
     } failure:^(NSString *error) {
-        [SVProgressHUD showErrorWithStatus:@"Failed to log in"];
-        [self.output showTabBar];
-        
+        [SVProgressHUD showErrorWithStatus:@"Failed to log in"];        
         [self.passwordTextField resignFirstResponder];
     }];
     

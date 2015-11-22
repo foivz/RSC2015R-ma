@@ -9,8 +9,11 @@
 #import "IntroViewController.h"
 #import "APIManager.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface IntroViewController () <UITextViewDelegate>
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -20,6 +23,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [APIManager sharedInstance];
+    
+//    self.locationManager = [CLLocationManager new];
+//    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+//        [self.locationManager requestWhenInUseAuthorization];
+//    [self.locationManager startUpdatingLocation];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

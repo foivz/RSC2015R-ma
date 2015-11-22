@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameReadyViewController : UIViewController
 
+
+@interface GameReadyViewController : UIViewController
 @end

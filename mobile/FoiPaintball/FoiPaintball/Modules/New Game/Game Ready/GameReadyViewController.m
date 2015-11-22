@@ -9,6 +9,8 @@
 #import "GameReadyViewController.h"
 #import "GameReadyTableViewCell.h"
 #import "APIManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "GameWireframe.h"
 
 @interface GameReadyViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *gameIdLabel;
@@ -24,7 +26,7 @@
 
     [self refreshPlayers];
     
-    self.gameIdLabel.text = [NSString stringWithFormat:@"Gamde id: @ld", (long)[APIManager sharedInstance].currentGame.gameId];
+    self.gameIdLabel.text = [NSString stringWithFormat:@"Game pin: %@", [APIManager sharedInstance].currentGame.pin];
 }
 
 - (void)refreshPlayers
@@ -71,6 +73,42 @@
     cell.readyImageView.hidden = !player.ready;
     
     return cell;
+}
+- (IBAction)readyGoButtonClicked:(UIButton *)sender {
+
+    if ([sender.titleLabel.text isEqualToString:@"Ready!"]) {
+        
+        [SVProgressHUD showWithStatus:@""];
+        
+        [[APIManager sharedInstance] playersAreReadyInWithSuccess:^(BOOL a) {
+            
+            [SVProgressHUD showSuccessWithStatus:@""];
+            
+            [sender setTitle:@"Go!" forState:UIControlStateNormal];
+            
+        } failure:^(BOOL b) {
+            [SVProgressHUD showErrorWithStatus:@"try again"];
+        }];
+        
+    } else {
+        [SVProgressHUD showWithStatus:@"starting game"];
+        
+        [[APIManager sharedInstance] startGameWithSuccess:^(BOOL a) {
+            
+            [SVProgressHUD showSuccessWithStatus:@""];
+            
+            [GameWireframe presentPlayGameWithNavigationController:self.navigationController];
+            
+        } failure:^(BOOL b) {
+            
+            [SVProgressHUD showErrorWithStatus:@"try again"];
+        }];
+    }
+}
+
+
+- (IBAction)cancelButtonClicked:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

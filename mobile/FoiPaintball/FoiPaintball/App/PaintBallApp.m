@@ -12,6 +12,7 @@
 #import "OnboardingWireframe.h"
 #import "GameWireframe.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "APIManager.h"
 
 @interface PaintBallApp() <OnboardingWireframeOutput>
 @property (strong, nonatomic) UIWindow *window;
@@ -59,6 +60,7 @@
 
 - (void)showStartingPoint
 {
+    
     [SVProgressHUD setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.8]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
         

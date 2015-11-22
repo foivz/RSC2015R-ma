@@ -9,6 +9,8 @@
 #import "GameWireframe.h"
 #import "APIManager.h"
 #import "CreateNewGameViewController.h"
+#import "PlayGameViewController.h"
+#import "IntroPlayerViewController.h"
 
 @interface GameWireframe()
 @property (strong, nonatomic) UINavigationController *navigationCotroller;
@@ -29,13 +31,24 @@
 - (void)presentInitialScreen
 {
     if ([[APIManager sharedInstance].user.role isEqualToString:@"player"]) {
-        //player intro
+        IntroPlayerViewController *view = [self.storyboard instantiateViewControllerWithIdentifier:@"IntroPlayerViewController"];
+        
+        [self.navigationCotroller pushViewController:view animated:YES];
     } else {
         //judge intro
         CreateNewGameViewController *view = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateNewGameViewController"];
         [self.navigationCotroller pushViewController:view animated:NO];
         
     }
+}
+
++ (void)presentPlayGameWithNavigationController:(UINavigationController *)navigationController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewGame" bundle:nil];
+    
+    PlayGameViewController *view = [storyboard instantiateViewControllerWithIdentifier:@"PlayGameViewController"];
+    
+    [navigationController setViewControllers:@[view] animated:YES];
 }
 
 @end

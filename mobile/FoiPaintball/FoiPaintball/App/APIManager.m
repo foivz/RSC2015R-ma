@@ -7,11 +7,14 @@
 //
 
 #import "APIManager.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface APIManager()
 @property (readonly, strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) AFHTTPRequestOperationManager *manager;
 @property (strong, nonatomic) APIGame *lastCreatedGame;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
 
 @end
 
@@ -27,6 +30,15 @@
         sharedMyManager.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
         sharedMyManager.manager.requestSerializer = [AFJSONRequestSerializer serializer];
         sharedMyManager.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        
+        sharedMyManager.locationManager = [CLLocationManager new];
+        sharedMyManager.locationManager.distanceFilter = kCLDistanceFilterNone;
+        sharedMyManager.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [sharedMyManager.locationManager requestWhenInUseAuthorization];
+        [sharedMyManager.locationManager startUpdatingLocation];
+        
+        [sharedMyManager postLocation];
+        
     });
     return sharedMyManager;
 }
@@ -129,9 +141,20 @@
     }];
 }
 
-- (void)playersInWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+- (void)playersAreReadyInWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
 {
     NSString *url = [NSString stringWithFormat:@"games/%ld/ready", (long)self.currentGame.gameId];
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+}
+
+- (void)startGameWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = [NSString stringWithFormat:@"games/%ld/start", (long)self.currentGame.gameId];
     
     [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         success(YES);
@@ -157,6 +180,67 @@
     }];
 }
 
+- (void)joinGameWithAPIJoinGame:(APIJoinGame *)joinGame success:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = @"games/join";
+    
+    self.myTeam = joinGame.team;
+    
+    [self.manager POST:url parameters:[joinGame toDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+       
+        NSError *jsonError;
+        APIGame *game = [[APIGame alloc] initWithDictionary:[responseObject objectForKey:@"game"] error:&jsonError];
+        
+        self.currentGame = game;
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+}
+
+- (void)playerIsReadyWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = [NSString stringWithFormat:@"users/%@/ready", self.user.userID];
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+}
+
+- (void)postLocation
+{
+
+    NSString *url = [NSString stringWithFormat:@"users/%@/location", self.user.userID];
+    
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    APILocation *myLocation = [APILocation new];
+    myLocation.longitude = self.locationManager.location.coordinate.longitude;
+    myLocation.latitude = self.locationManager.location.coordinate.latitude;
+    
+    
+    [self.manager POST:url parameters:[myLocation toDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self postLocation];
+        });
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self postLocation];
+        });
+    }];
+}
+
+
+
 -(NSString *)getUniqueDeviceIdentifierAsString
 {
 
@@ -169,5 +253,7 @@
     
     return [strApplicationUUID stringByReplacingOccurrencesOfString:@"-" withString:@""];
 }
+
+
 
 @end

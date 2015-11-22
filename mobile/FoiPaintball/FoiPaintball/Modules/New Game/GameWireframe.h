@@ -11,5 +11,6 @@
 
 @interface GameWireframe : NSObject
 + (instancetype)setUpWithNavigationController:(UINavigationController *)navigationController;
++ (void)presentPlayGameWithNavigationController:(UINavigationController *)navigationController;
 - (void)presentInitialScreen;
 @end
