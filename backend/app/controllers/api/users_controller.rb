@@ -160,6 +160,9 @@ class Api::UsersController < Api::ApiBaseController
           statistic.save
         end
       end
+      render :show
+    else
+      render_not_found('Wrong pin')
     end
   end
 
