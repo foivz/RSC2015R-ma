@@ -90,7 +90,7 @@ class Api::UsersController < Api::ApiBaseController
     opponent_team.save
 
     # Insert record in statistics table
-    duration_alive = ((game.start_date - DateTime.now) * 24 * 60 * 60).to_i
+    duration_alive = ((DateTime.now - game.start_date) * 24 * 60 * 60).to_i
     UserStatistic.create(user_id: @user.id, game_id: game.id, died: true, duration_alive: duration_alive)
 
     # Is game over?
