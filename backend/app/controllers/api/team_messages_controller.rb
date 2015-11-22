@@ -8,7 +8,7 @@ class Api::TeamMessagesController < Api::ApiBaseController
   def inbox
     team = params[:team].downcase
     game = @logged_in_user.game
-    team_id = team == 'a' ? game.team_a.id : game.team_b.id
+    team_id = (team == 'a') ? game.team_a.id : game.team_b.id
 
     if team_id.present?
       @team_messages = TeamMessage.where(team_id: team_id)
