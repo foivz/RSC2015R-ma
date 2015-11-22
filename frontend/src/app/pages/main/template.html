@@ -97,7 +97,7 @@
       </div>
     </div>
     <ul class="player-list">
-      <li class="player-list__item" ng-repeat="player in main.team.B.players" ng-class="player.isEliminated ? 'is-dead' : ''">
+      <li class="player-list__item" ng-repeat="player in main.team.B.players" ng-class="main.getClasses(player)" ng-click="main.onPlayerClick(player)">
         <div class="player-list__name">
           {{player.name}}
         </div>
