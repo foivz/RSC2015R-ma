@@ -31,7 +31,7 @@ class GamesController {
         game.team = {
           A: {
             name: teamA.name,
-            count: teamA.count,
+            count: teamA.total_count,
             position: {
               latitude: parseFloat(teamA.latitude),
               longitude: parseFloat(teamA.longitude)
@@ -40,7 +40,7 @@ class GamesController {
           },
           B: {
             name: teamB.name,
-            count: teamB.count,
+            count: teamB.total_count,
             position: {
               latitude: parseFloat(teamB.latitude),
               longitude: parseFloat(teamB.longitude)
