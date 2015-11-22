@@ -19,6 +19,13 @@
 @property (strong, nonatomic) APIManager *apiManager;
 @property (strong, nonatomic) NSMutableArray *teamAPois;
 @property (strong, nonatomic) NSMutableArray *teamBPois;
+
+@property (weak, nonatomic) IBOutlet UIButton *firstButton;
+@property (weak, nonatomic) IBOutlet UIButton *seconfButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdButton;
+@property (weak, nonatomic) IBOutlet UIButton *fourButton;
+
+
 @end
 
 @implementation PlayGameViewController
@@ -27,6 +34,16 @@
     [super viewDidLoad];
     
     self.apiManager = [APIManager sharedInstance];
+    
+    if ([self.apiManager.user.role isEqualToString:@"judge"]) {
+        
+        self.firstButton.hidden = YES;
+        self.seconfButton.hidden = YES;
+        self.thirdButton.hidden = YES;
+        self.fourButton.hidden = YES;
+        
+    }
+    
     
     CLLocationCoordinate2D cordinateA = CLLocationCoordinate2DMake(self.apiManager.currentGame.team_a.latitude, self.apiManager.currentGame.team_a.longitude);
     
@@ -80,7 +97,9 @@
         
         
     } failure:^(BOOL b) {
-        [self refreshGame];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self refreshGame];
+        });
     }];
 }
 
@@ -164,6 +183,13 @@
 }
 
 - (IBAction)deadButton:(UIButton *)sender {
+    
+    [self.apiManager killWithUserId:self.apiManager.user.userID withSuccess:^(BOOL a) {
+        
+    } failure:^(BOOL a) {
+        
+    }];
+    
 }
 
 - (IBAction)forwardbutton:(UIButton *)sender {

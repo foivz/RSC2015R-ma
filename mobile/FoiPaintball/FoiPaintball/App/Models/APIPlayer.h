@@ -19,4 +19,5 @@
 @property (assign, nonatomic) CGFloat latitude;
 @property (assign, nonatomic) CGFloat longitude;
 @property (strong, nonatomic) NSString *team;
+@property (assign, nonatomic) BOOL alive;
 @end

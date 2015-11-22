@@ -14,6 +14,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "APIManager.h"
 #import "CommunicationViewController.h"
+#import "PlayersViewController.h"
 
 @interface PaintBallApp() <OnboardingWireframeOutput>
 @property (strong, nonatomic) UIWindow *window;
@@ -76,6 +77,11 @@
     UINavigationController *navigationCont = [self.paintballTabBarViewController.viewControllers objectAtIndex:1];
     [navigationCont pushViewController:communicationView animated:YES];
     
+    //players
+    UIStoryboard *playersStoryboard = [UIStoryboard storyboardWithName:@"Players" bundle:nil];
+    PlayersViewController *playersView = playersStoryboard.instantiateInitialViewController;
+    UINavigationController *navigationCont2 = [self.paintballTabBarViewController.viewControllers objectAtIndex:2];
+    [navigationCont2 pushViewController:playersView animated:YES];
     
     //gamewireframe
     self.gameWireframe = [GameWireframe setUpWithNavigationController:[self.paintballTabBarViewController.viewControllers objectAtIndex:0]];

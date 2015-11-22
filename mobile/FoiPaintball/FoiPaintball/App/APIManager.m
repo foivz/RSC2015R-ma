@@ -240,6 +240,37 @@
 }
 
 
+- (void)getTeamAMessagesWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = @"team_messages/inbox?team=a";
+    
+    [self.manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSArray *messages = [APIMessage arrayOfModelsFromDictionaries:[responseObject objectForKey:@"team_messages"]];
+        self.teamAMessages = messages;
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+}
+
+- (void)getTeamBMessagesWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = @"team_messages/inbox?team=b";
+    
+    
+    
+    [self.manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSArray *messages = [APIMessage arrayOfModelsFromDictionaries:[responseObject objectForKey:@"team_messages"]];
+        self.teamBMessages = messages;
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+}
+
 
 -(NSString *)getUniqueDeviceIdentifierAsString
 {
@@ -286,4 +317,54 @@
 
 }
 
+- (void)sendMessageLikeA:(NSString *)message
+{
+    NSString *url = @"team_messages";
+    
+    APIPostMessage *postMessage = [APIPostMessage new];
+    postMessage.message = message;
+    postMessage.team = @"a";
+    
+    [self.manager POST:url parameters:[postMessage toDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)sendMessageLikeB:(NSString *)message
+{
+    NSString *url = @"team_messages";
+    
+    APIPostMessage *postMessage = [APIPostMessage new];
+    postMessage.message = message;
+    postMessage.team = @"b";
+    
+    [self.manager POST:url parameters:[postMessage toDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)killWithUserId:(NSString *)userId withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = [NSString stringWithFormat:@"users/%@/kill", userId];
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+    
+}
+
 @end
+
+
+
+
+
+
+

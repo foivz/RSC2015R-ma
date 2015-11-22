@@ -26,7 +26,7 @@
 
     [self refreshPlayers];
     
-    self.gameIdLabel.text = [NSString stringWithFormat:@"Game pin: %@", [APIManager sharedInstance].currentGame.pin];
+    self.gameIdLabel.text = [NSString stringWithFormat:@"%@", [APIManager sharedInstance].currentGame.pin];
 }
 
 - (void)refreshPlayers

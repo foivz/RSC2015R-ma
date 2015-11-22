@@ -27,6 +27,9 @@
 		430E83CA1C00B78300F072A8 /* APIUserRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 430E83C91C00B78300F072A8 /* APIUserRegister.m */; };
 		436DCF5C1C00CE9E0036D7BA /* NewGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436DCF5B1C00CE9E0036D7BA /* NewGame.storyboard */; };
 		436DCF641C00CF740036D7BA /* CreateNewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DCF631C00CF740036D7BA /* CreateNewGameViewController.m */; };
+		437C8E2F1C01BCFB008D2F17 /* PlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C8E2E1C01BCFB008D2F17 /* PlayersViewController.m */; };
+		437C8E311C01BD0C008D2F17 /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437C8E301C01BD0C008D2F17 /* Players.storyboard */; };
+		437C8E341C01BEBA008D2F17 /* PlayersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C8E331C01BEBA008D2F17 /* PlayersTableViewCell.m */; };
 		4380485F1C00D96B00E0EEF8 /* GameWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380485E1C00D96B00E0EEF8 /* GameWireframe.m */; };
 		438048641C00E34200E0EEF8 /* MapCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048631C00E34200E0EEF8 /* MapCreateViewController.m */; };
 		438048671C00E73800E0EEF8 /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048661C00E73800E0EEF8 /* MyLocation.m */; };
@@ -42,6 +45,32 @@
 		4380488D1C0178AF00E0EEF8 /* CommunicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380488C1C0178AF00E0EEF8 /* CommunicationViewController.m */; };
 		4380488F1C0178BF00E0EEF8 /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4380488E1C0178BF00E0EEF8 /* Communication.storyboard */; };
 		438048921C017B4000E0EEF8 /* CommunicationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */; };
+		438048951C0180A700E0EEF8 /* APIMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048941C0180A700E0EEF8 /* APIMessage.m */; };
+		439FB8C91C018970009106E9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439FB8C81C018970009106E9 /* ProfileViewController.m */; };
+		439FB8CC1C018E53009106E9 /* APIPostMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 439FB8CB1C018E53009106E9 /* APIPostMessage.m */; };
+		439FB8E31C01A191009106E9 /* SF-UI-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8CE1C01A191009106E9 /* SF-UI-Display-Black.otf */; };
+		439FB8E41C01A191009106E9 /* SF-UI-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8CF1C01A191009106E9 /* SF-UI-Display-Bold.otf */; };
+		439FB8E51C01A191009106E9 /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D01C01A191009106E9 /* SF-UI-Display-Heavy.otf */; };
+		439FB8E61C01A191009106E9 /* SF-UI-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D11C01A191009106E9 /* SF-UI-Display-Light.otf */; };
+		439FB8E71C01A191009106E9 /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D21C01A191009106E9 /* SF-UI-Display-Medium.otf */; };
+		439FB8E81C01A191009106E9 /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D31C01A191009106E9 /* SF-UI-Display-Regular.otf */; };
+		439FB8E91C01A191009106E9 /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D41C01A191009106E9 /* SF-UI-Display-Semibold.otf */; };
+		439FB8EA1C01A191009106E9 /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D51C01A191009106E9 /* SF-UI-Display-Thin.otf */; };
+		439FB8EB1C01A191009106E9 /* SF-UI-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D61C01A191009106E9 /* SF-UI-Display-Ultralight.otf */; };
+		439FB8EC1C01A191009106E9 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D71C01A191009106E9 /* SF-UI-Text-Bold.otf */; };
+		439FB8ED1C01A191009106E9 /* SF-UI-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D81C01A191009106E9 /* SF-UI-Text-BoldItalic.otf */; };
+		439FB8EE1C01A191009106E9 /* SF-UI-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8D91C01A191009106E9 /* SF-UI-Text-Heavy.otf */; };
+		439FB8EF1C01A191009106E9 /* SF-UI-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DA1C01A191009106E9 /* SF-UI-Text-HeavyItalic.otf */; };
+		439FB8F01C01A191009106E9 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DB1C01A191009106E9 /* SF-UI-Text-Light.otf */; };
+		439FB8F11C01A191009106E9 /* SF-UI-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DC1C01A191009106E9 /* SF-UI-Text-LightItalic.otf */; };
+		439FB8F21C01A191009106E9 /* SF-UI-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DD1C01A191009106E9 /* SF-UI-Text-Medium.otf */; };
+		439FB8F31C01A191009106E9 /* SF-UI-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DE1C01A191009106E9 /* SF-UI-Text-MediumItalic.otf */; };
+		439FB8F41C01A191009106E9 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8DF1C01A191009106E9 /* SF-UI-Text-Regular.otf */; };
+		439FB8F51C01A191009106E9 /* SF-UI-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8E01C01A191009106E9 /* SF-UI-Text-RegularItalic.otf */; };
+		439FB8F61C01A191009106E9 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8E11C01A191009106E9 /* SF-UI-Text-Semibold.otf */; };
+		439FB8F71C01A191009106E9 /* SF-UI-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 439FB8E21C01A191009106E9 /* SF-UI-Text-SemiboldItalic.otf */; };
+		439FB8FB1C01A1EB009106E9 /* PaintBallButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 439FB8FA1C01A1EB009106E9 /* PaintBallButton.m */; };
+		439FB8FE1C01A38C009106E9 /* ClearButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 439FB8FD1C01A38C009106E9 /* ClearButton.m */; };
 		C888254D123B57A7F81F65B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C0C09C55479FAD3FA9165F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +112,11 @@
 		436DCF5B1C00CE9E0036D7BA /* NewGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewGame.storyboard; sourceTree = "<group>"; };
 		436DCF621C00CF740036D7BA /* CreateNewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewGameViewController.h; sourceTree = "<group>"; };
 		436DCF631C00CF740036D7BA /* CreateNewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewGameViewController.m; sourceTree = "<group>"; };
+		437C8E2D1C01BCFB008D2F17 /* PlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersViewController.h; sourceTree = "<group>"; };
+		437C8E2E1C01BCFB008D2F17 /* PlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersViewController.m; sourceTree = "<group>"; };
+		437C8E301C01BD0C008D2F17 /* Players.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Players.storyboard; sourceTree = "<group>"; };
+		437C8E321C01BEBA008D2F17 /* PlayersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersTableViewCell.h; sourceTree = "<group>"; };
+		437C8E331C01BEBA008D2F17 /* PlayersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersTableViewCell.m; sourceTree = "<group>"; };
 		4380485D1C00D96B00E0EEF8 /* GameWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWireframe.h; sourceTree = "<group>"; };
 		4380485E1C00D96B00E0EEF8 /* GameWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWireframe.m; sourceTree = "<group>"; };
 		438048621C00E34200E0EEF8 /* MapCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCreateViewController.h; sourceTree = "<group>"; };
@@ -112,6 +146,37 @@
 		4380488E1C0178BF00E0EEF8 /* Communication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Communication.storyboard; sourceTree = "<group>"; };
 		438048901C017B4000E0EEF8 /* CommunicationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationTableViewCell.h; sourceTree = "<group>"; };
 		438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationTableViewCell.m; sourceTree = "<group>"; };
+		438048931C0180A700E0EEF8 /* APIMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIMessage.h; sourceTree = "<group>"; };
+		438048941C0180A700E0EEF8 /* APIMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIMessage.m; sourceTree = "<group>"; };
+		439FB8C71C018970009106E9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		439FB8C81C018970009106E9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		439FB8CA1C018E53009106E9 /* APIPostMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPostMessage.h; sourceTree = "<group>"; };
+		439FB8CB1C018E53009106E9 /* APIPostMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIPostMessage.m; sourceTree = "<group>"; };
+		439FB8CE1C01A191009106E9 /* SF-UI-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Black.otf"; sourceTree = "<group>"; };
+		439FB8CF1C01A191009106E9 /* SF-UI-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Bold.otf"; sourceTree = "<group>"; };
+		439FB8D01C01A191009106E9 /* SF-UI-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Heavy.otf"; sourceTree = "<group>"; };
+		439FB8D11C01A191009106E9 /* SF-UI-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Light.otf"; sourceTree = "<group>"; };
+		439FB8D21C01A191009106E9 /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
+		439FB8D31C01A191009106E9 /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
+		439FB8D41C01A191009106E9 /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
+		439FB8D51C01A191009106E9 /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
+		439FB8D61C01A191009106E9 /* SF-UI-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		439FB8D71C01A191009106E9 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
+		439FB8D81C01A191009106E9 /* SF-UI-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		439FB8D91C01A191009106E9 /* SF-UI-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Heavy.otf"; sourceTree = "<group>"; };
+		439FB8DA1C01A191009106E9 /* SF-UI-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		439FB8DB1C01A191009106E9 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
+		439FB8DC1C01A191009106E9 /* SF-UI-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		439FB8DD1C01A191009106E9 /* SF-UI-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Medium.otf"; sourceTree = "<group>"; };
+		439FB8DE1C01A191009106E9 /* SF-UI-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		439FB8DF1C01A191009106E9 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
+		439FB8E01C01A191009106E9 /* SF-UI-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		439FB8E11C01A191009106E9 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
+		439FB8E21C01A191009106E9 /* SF-UI-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		439FB8F91C01A1EB009106E9 /* PaintBallButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintBallButton.h; sourceTree = "<group>"; };
+		439FB8FA1C01A1EB009106E9 /* PaintBallButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintBallButton.m; sourceTree = "<group>"; };
+		439FB8FC1C01A38C009106E9 /* ClearButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearButton.h; sourceTree = "<group>"; };
+		439FB8FD1C01A38C009106E9 /* ClearButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearButton.m; sourceTree = "<group>"; };
 		897B50E8E616024860B32014 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3004BA700C0D4F8B8C6214F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +237,8 @@
 		430E83921C0091EF00F072A8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				439FB8F81C01A1CF009106E9 /* Paintball Button */,
+				439FB8CD1C01A191009106E9 /* Fonts */,
 				430E83BB1C00AD8400F072A8 /* Models */,
 				430E83961C00926300F072A8 /* PaintBallApp.h */,
 				430E83971C00926300F072A8 /* PaintBallApp.m */,
@@ -184,6 +251,8 @@
 		430E83931C0091EF00F072A8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				437C8E2C1C01BCE4008D2F17 /* Players */,
+				439FB8C61C01893A009106E9 /* Profile */,
 				4380488A1C01789700E0EEF8 /* Communication */,
 				436DCF5A1C00CE6E0036D7BA /* New Game */,
 				430E83A41C009E0600F072A8 /* Onboarding */,
@@ -289,6 +358,10 @@
 				438048791C01248E00E0EEF8 /* APIPlayer.m */,
 				438048861C0143E600E0EEF8 /* APIJoinGame.h */,
 				438048871C0143E600E0EEF8 /* APIJoinGame.m */,
+				438048931C0180A700E0EEF8 /* APIMessage.h */,
+				438048941C0180A700E0EEF8 /* APIMessage.m */,
+				439FB8CA1C018E53009106E9 /* APIPostMessage.h */,
+				439FB8CB1C018E53009106E9 /* APIPostMessage.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +388,18 @@
 				436DCF631C00CF740036D7BA /* CreateNewGameViewController.m */,
 			);
 			path = "Create New Game";
+			sourceTree = "<group>";
+		};
+		437C8E2C1C01BCE4008D2F17 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				437C8E2D1C01BCFB008D2F17 /* PlayersViewController.h */,
+				437C8E2E1C01BCFB008D2F17 /* PlayersViewController.m */,
+				437C8E301C01BD0C008D2F17 /* Players.storyboard */,
+				437C8E321C01BEBA008D2F17 /* PlayersTableViewCell.h */,
+				437C8E331C01BEBA008D2F17 /* PlayersTableViewCell.m */,
+			);
+			path = Players;
 			sourceTree = "<group>";
 		};
 		438048611C00E33100E0EEF8 /* Map Create */ = {
@@ -367,6 +452,54 @@
 				438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */,
 			);
 			path = Communication;
+			sourceTree = "<group>";
+		};
+		439FB8C61C01893A009106E9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				439FB8C71C018970009106E9 /* ProfileViewController.h */,
+				439FB8C81C018970009106E9 /* ProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		439FB8CD1C01A191009106E9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				439FB8CE1C01A191009106E9 /* SF-UI-Display-Black.otf */,
+				439FB8CF1C01A191009106E9 /* SF-UI-Display-Bold.otf */,
+				439FB8D01C01A191009106E9 /* SF-UI-Display-Heavy.otf */,
+				439FB8D11C01A191009106E9 /* SF-UI-Display-Light.otf */,
+				439FB8D21C01A191009106E9 /* SF-UI-Display-Medium.otf */,
+				439FB8D31C01A191009106E9 /* SF-UI-Display-Regular.otf */,
+				439FB8D41C01A191009106E9 /* SF-UI-Display-Semibold.otf */,
+				439FB8D51C01A191009106E9 /* SF-UI-Display-Thin.otf */,
+				439FB8D61C01A191009106E9 /* SF-UI-Display-Ultralight.otf */,
+				439FB8D71C01A191009106E9 /* SF-UI-Text-Bold.otf */,
+				439FB8D81C01A191009106E9 /* SF-UI-Text-BoldItalic.otf */,
+				439FB8D91C01A191009106E9 /* SF-UI-Text-Heavy.otf */,
+				439FB8DA1C01A191009106E9 /* SF-UI-Text-HeavyItalic.otf */,
+				439FB8DB1C01A191009106E9 /* SF-UI-Text-Light.otf */,
+				439FB8DC1C01A191009106E9 /* SF-UI-Text-LightItalic.otf */,
+				439FB8DD1C01A191009106E9 /* SF-UI-Text-Medium.otf */,
+				439FB8DE1C01A191009106E9 /* SF-UI-Text-MediumItalic.otf */,
+				439FB8DF1C01A191009106E9 /* SF-UI-Text-Regular.otf */,
+				439FB8E01C01A191009106E9 /* SF-UI-Text-RegularItalic.otf */,
+				439FB8E11C01A191009106E9 /* SF-UI-Text-Semibold.otf */,
+				439FB8E21C01A191009106E9 /* SF-UI-Text-SemiboldItalic.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		439FB8F81C01A1CF009106E9 /* Paintball Button */ = {
+			isa = PBXGroup;
+			children = (
+				439FB8F91C01A1EB009106E9 /* PaintBallButton.h */,
+				439FB8FA1C01A1EB009106E9 /* PaintBallButton.m */,
+				439FB8FC1C01A38C009106E9 /* ClearButton.h */,
+				439FB8FD1C01A38C009106E9 /* ClearButton.m */,
+			);
+			path = "Paintball Button";
 			sourceTree = "<group>";
 		};
 		DCA04863E08F62635AEB8D2C /* Frameworks */ = {
@@ -446,12 +579,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439FB8E61C01A191009106E9 /* SF-UI-Display-Light.otf in Resources */,
 				430E83A01C0095EA00F072A8 /* PaintballTabBar.storyboard in Resources */,
+				439FB8F41C01A191009106E9 /* SF-UI-Text-Regular.otf in Resources */,
+				439FB8E81C01A191009106E9 /* SF-UI-Display-Regular.otf in Resources */,
+				439FB8F61C01A191009106E9 /* SF-UI-Text-Semibold.otf in Resources */,
+				439FB8EF1C01A191009106E9 /* SF-UI-Text-HeavyItalic.otf in Resources */,
+				439FB8EE1C01A191009106E9 /* SF-UI-Text-Heavy.otf in Resources */,
+				439FB8E71C01A191009106E9 /* SF-UI-Display-Medium.otf in Resources */,
 				430E838B1C008D0B00F072A8 /* LaunchScreen.storyboard in Resources */,
+				439FB8E91C01A191009106E9 /* SF-UI-Display-Semibold.otf in Resources */,
+				439FB8F31C01A191009106E9 /* SF-UI-Text-MediumItalic.otf in Resources */,
+				439FB8E41C01A191009106E9 /* SF-UI-Display-Bold.otf in Resources */,
+				439FB8F71C01A191009106E9 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				430E83881C008D0B00F072A8 /* Assets.xcassets in Resources */,
+				439FB8F21C01A191009106E9 /* SF-UI-Text-Medium.otf in Resources */,
+				439FB8F01C01A191009106E9 /* SF-UI-Text-Light.otf in Resources */,
+				439FB8E51C01A191009106E9 /* SF-UI-Display-Heavy.otf in Resources */,
+				439FB8ED1C01A191009106E9 /* SF-UI-Text-BoldItalic.otf in Resources */,
 				436DCF5C1C00CE9E0036D7BA /* NewGame.storyboard in Resources */,
+				439FB8EA1C01A191009106E9 /* SF-UI-Display-Thin.otf in Resources */,
 				430E83A61C009E2400F072A8 /* Onboarding.storyboard in Resources */,
+				437C8E311C01BD0C008D2F17 /* Players.storyboard in Resources */,
 				4380488F1C0178BF00E0EEF8 /* Communication.storyboard in Resources */,
+				439FB8EB1C01A191009106E9 /* SF-UI-Display-Ultralight.otf in Resources */,
+				439FB8EC1C01A191009106E9 /* SF-UI-Text-Bold.otf in Resources */,
+				439FB8F51C01A191009106E9 /* SF-UI-Text-RegularItalic.otf in Resources */,
+				439FB8F11C01A191009106E9 /* SF-UI-Text-LightItalic.otf in Resources */,
+				439FB8E31C01A191009106E9 /* SF-UI-Display-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,19 +669,25 @@
 				4380486A1C00F47700E0EEF8 /* APIGame.m in Sources */,
 				430E83C41C00AE2C00F072A8 /* APIUser.m in Sources */,
 				430E83AD1C009F2600F072A8 /* IntroViewController.m in Sources */,
+				437C8E341C01BEBA008D2F17 /* PlayersTableViewCell.m in Sources */,
 				430E83BA1C00AACA00F072A8 /* APIManager.m in Sources */,
 				4380488D1C0178AF00E0EEF8 /* CommunicationViewController.m in Sources */,
 				438048671C00E73800E0EEF8 /* MyLocation.m in Sources */,
 				430E83981C00926300F072A8 /* PaintBallApp.m in Sources */,
 				430E83C11C00AE0600F072A8 /* APIRegister.m in Sources */,
 				438048851C01423C00E0EEF8 /* IntroPlayerViewController.m in Sources */,
+				439FB8FB1C01A1EB009106E9 /* PaintBallButton.m in Sources */,
 				430E83801C008D0B00F072A8 /* AppDelegate.m in Sources */,
 				430E83B41C009F6200F072A8 /* LoginViewController.m in Sources */,
 				438048701C00FC6500E0EEF8 /* APIField.m in Sources */,
 				438048771C01220200E0EEF8 /* GameReadyTableViewCell.m in Sources */,
 				430E837D1C008D0B00F072A8 /* main.m in Sources */,
 				4380485F1C00D96B00E0EEF8 /* GameWireframe.m in Sources */,
+				439FB8CC1C018E53009106E9 /* APIPostMessage.m in Sources */,
+				438048951C0180A700E0EEF8 /* APIMessage.m in Sources */,
+				439FB8FE1C01A38C009106E9 /* ClearButton.m in Sources */,
 				430E83A91C009E3900F072A8 /* OnboardingWireframe.m in Sources */,
+				439FB8C91C018970009106E9 /* ProfileViewController.m in Sources */,
 				430E83BE1C00AD9800F072A8 /* APILogin.m in Sources */,
 				430E83B71C009F7200F072A8 /* RegisterViewController.m in Sources */,
 				438048881C0143E600E0EEF8 /* APIJoinGame.m in Sources */,
@@ -536,6 +697,7 @@
 				438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */,
 				430E83C71C00AE4B00F072A8 /* APILoginResult.m in Sources */,
 				438048921C017B4000E0EEF8 /* CommunicationTableViewCell.m in Sources */,
+				437C8E2F1C01BCFB008D2F17 /* PlayersViewController.m in Sources */,
 				4380487A1C01248E00E0EEF8 /* APIPlayer.m in Sources */,
 				436DCF641C00CF740036D7BA /* CreateNewGameViewController.m in Sources */,
 				438048641C00E34200E0EEF8 /* MapCreateViewController.m in Sources */,

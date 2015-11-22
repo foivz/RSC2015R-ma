@@ -17,6 +17,8 @@
 #import "APIField.h"
 #import "APIGame.h"
 #import "APIJoinGame.h"
+#import "APIMessage.h"
+#import "APIPostMessage.h"
 
 @interface APIManager : NSObject
 @property (strong, nonatomic) APIUser *user;
@@ -24,6 +26,9 @@
 
 @property (strong, nonatomic) APIGame *currentGame;
 @property (strong, nonatomic) NSString *myTeam;
+
+@property (strong, nonatomic) NSArray *teamAMessages;
+@property (strong, nonatomic) NSArray *teamBMessages;
 
 - (void)registerWithAPIregister:(APIRegister *)apiRegister withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 
@@ -46,5 +51,13 @@
 - (void)attack;
 - (void)fallback;
 - (void)cover;
+
+- (void)killWithUserId:(NSString *)userId withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+
+- (void)getTeamAMessagesWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+- (void)getTeamBMessagesWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
+
+- (void)sendMessageLikeA:(NSString *)message;
+- (void)sendMessageLikeB:(NSString *)message;
 
 @end
