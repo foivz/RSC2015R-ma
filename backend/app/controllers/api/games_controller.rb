@@ -36,6 +36,10 @@ class Api::GamesController < Api::ApiBaseController
         latitude: obstacle_data[:latitude], longitude: obstacle_data[:longitude])
     end
 
+    # Join judge to game
+    @logged_in_user.game_id = @game.id
+    @logged_in_user.save
+
     render :show, status: :created
   end
 
