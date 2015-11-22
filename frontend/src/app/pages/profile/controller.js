@@ -5,6 +5,7 @@ class ProfileController {
     profileService.getUser($state.params.id).then((data) => {
       this.username = data.username;
       this.name = data.name;
+      this.isJudge = data.role === 'judge';
 
       if (data.statistics) {
         this.deaths = data.statistics.death_count;
