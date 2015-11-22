@@ -16,8 +16,8 @@ class MainController {
   }
 
   setMapInformation() {
-    var latitude = (this.game.field.latitude_nw + this.game.field.latitude_se) / 2;
-    var longitude = (this.game.field.longitude_nw + this.game.field.longitude_se) / 2;
+    var latitude = (parseFloat(this.game.field.latitude_nw) + parseFloat(this.game.field.latitude_se)) / 2;
+    var longitude = (parseFloat(this.game.field.longitude_nw) + parseFloat(this.game.field.longitude_se)) / 2;
 
     this.map = {
       center: {
@@ -28,7 +28,8 @@ class MainController {
       options: {
         disableDefaultUI: true,
         draggable: false,
-        zoomControl: false
+        zoomControl: false,
+        scrollwheel: false
       }
     };
 
@@ -36,11 +37,11 @@ class MainController {
       setTimeout(() => {
         var map = this.map.getGMap();
         this.fieldBounds = new maps.LatLngBounds({
-          lat: this.game.field.latitude_nw,
-          lng: this.game.field.longitude_nw
+          lat: parseFloat(this.game.field.latitude_nw),
+          lng: parseFloat(this.game.field.longitude_nw)
         }, {
-          lat: this.game.field.latitude_se,
-          lng: this.game.field.longitude_se
+          lat: parseFloat(this.game.field.latitude_se),
+          lng: parseFloat(this.game.field.longitude_se)
         });
         map.fitBounds(this.fieldBounds);
       }, 300);
@@ -58,8 +59,8 @@ class MainController {
     let teamB = this.game.team_b;
     let teamAPlayers = teamA.players.map((el) => {
       var x = new Player(el.id, {
-        latitude: el.latitude,
-        longitude: el.longitude
+        latitude: parseFloat(el.latitude),
+        longitude: parseFloat(el.longitude)
       }, teamA.name, el.name);
 
       if (!el.alive) {
@@ -71,8 +72,8 @@ class MainController {
     });
     let teamBPlayers = teamB.players.map((el) => {
       var x = new Player(el.id, {
-        latitude: el.latitude,
-        longitude: el.longitude
+        latitude: parseFloat(el.latitude),
+        longitude: parseFloat(el.longitude)
       }, teamB.name, el.name);
 
       if (!el.alive) {
@@ -88,8 +89,8 @@ class MainController {
         name: teamA.name,
         count: teamA.count,
         position: {
-          latitude: teamA.latitude,
-          longitude: teamA.longitude
+          latitude: parseFloat(teamA.latitude),
+          longitude: parseFloat(teamA.longitude)
         },
         players: teamAPlayers,
         score: teamA.score
@@ -98,8 +99,8 @@ class MainController {
         name: teamB.name,
         count: teamB.count,
         position: {
-          latitude: teamB.latitude,
-          longitude: teamB.longitude
+          latitude: parseFloat(teamB.latitude),
+          longitude: parseFloat(teamB.longitude)
         },
         players: teamBPlayers,
         score: teamB.score
@@ -121,16 +122,16 @@ class MainController {
       data.team_a.players.forEach((p) => {
         if (el.id === p.id) {
           el.moveTo({
-            latitude: p.latitude,
-            longitude: p.longitude
+            latitude: parseFloat(p.latitude),
+            longitude: parseFloat(p.longitude)
           });
         }
       });
       data.team_b.players.forEach((p) => {
         if (el.id === p.id) {
           el.moveTo({
-            latitude: p.latitude,
-            longitude: p.longitude
+            latitude: parseFloat(p.latitude),
+            longitude: parseFloat(p.longitude)
           });
         }
       });
@@ -164,7 +165,10 @@ class MainController {
     if (this.map.refresh) {
       this.map.refresh();
     }
-    this.$scope.$apply();
+    
+    if (!this.$scope.$$phase) {
+      this.$scope.$apply();
+    }
   }
 }
 

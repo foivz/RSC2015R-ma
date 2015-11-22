@@ -3,9 +3,9 @@ class ConfigService {
     'ngInject';
 
     this.data = {
-      mock: true,
+      mock: false,
 
-      updateTime: 100,
+      updateTime: 1000,
       apiUrl: 'http://37.139.4.107:3000/api'
     };
   }
