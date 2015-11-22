@@ -26,6 +26,7 @@ class Player extends MapObject {
 
   eliminate() {
     this.isEliminated = true;
+    this.icon = '/assets/images/pin_death.png';
   }
 
   moveTo(position) {

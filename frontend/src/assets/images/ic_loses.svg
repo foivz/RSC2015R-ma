@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_loses</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD-Copy-3" sketch:type="MSArtboardGroup" transform="translate(-664.000000, -320.000000)" fill="#333333">
+            <g id="Loses-+-Group-+-Title-Label-Copy-7" sketch:type="MSLayerGroup" transform="translate(664.000000, 230.000000)">
+                <g id="Loses-+-Group" transform="translate(0.000000, 90.000000)" sketch:type="MSShapeGroup">
+                    <g id="ic_loses">
+                        <circle id="Oval" cx="20.1129167" cy="10.78125" r="2.03125"></circle>
+                        <circle id="Oval" cx="9.88708333" cy="10.78125" r="2.03125"></circle>
+                        <path d="M15,0 C6.71583333,0 0,6.71583333 0,15 C0,23.2841667 6.71583333,30 15,30 C23.2841667,30 30,23.2841667 30,15 C30,6.71583333 23.2841667,0 15,0 L15,0 Z M15,27.5008333 C8.09666667,27.5008333 2.5,21.9041667 2.5,15.0008333 C2.5,8.09708333 8.09666667,2.5 15,2.5 C21.9041667,2.5 27.5008333,8.09666667 27.5008333,15.0004167 C27.5008333,21.9041667 21.9041667,27.5008333 15,27.5008333 L15,27.5008333 Z" id="Shape"></path>
+                        <path d="M20.81125,23.2583333 C20.3808333,23.2583333 19.9629167,23.0295833 19.7404167,22.6254167 C18.78875,20.8941667 16.9716667,19.8183333 15,19.8183333 C13.0279167,19.8183333 11.21125,20.8941667 10.2595833,22.6254167 C9.93458333,23.21625 9.19208333,23.4320833 8.60166667,23.1066667 C8.01083333,22.7820833 7.795,22.0395833 8.12,21.44875 C9.50083333,18.9366667 12.1375,17.37625 15.0004167,17.37625 C17.8629167,17.37625 20.5,18.9370833 21.8808333,21.44875 C22.2058333,22.0395833 21.9904167,22.7816667 21.3995833,23.1066667 C21.2120833,23.2095833 21.0104167,23.2583333 20.81125,23.2583333 L20.81125,23.2583333 L20.81125,23.2583333 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
