@@ -28,7 +28,7 @@ class Game < ActiveRecord::Base
   end
 
   def total_count
-    self.team_a.count + self.team_b.counte
+    self.team_a.count + self.team_b.count
   end
 
   def dead_count
