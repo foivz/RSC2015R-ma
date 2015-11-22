@@ -202,12 +202,13 @@
     APIMessage *message;
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         message = [APIManager sharedInstance].teamAMessages[indexPath.row];
+        cell.roundedView.backgroundColor = [UIColor colorWithRed:230/255. green:46/255. blue:0/255. alpha:1];
         
-        cell.roundedView.backgroundColor = [UIColor colorWithRed:17/255. green:136/255. blue:247/255. alpha:1];
     } else {
          message = [APIManager sharedInstance].teamBMessages[indexPath.row];
         
-        cell.roundedView.backgroundColor = [UIColor colorWithRed:230/255. green:46/255. blue:0/255. alpha:1];
+        cell.roundedView.backgroundColor = [UIColor colorWithRed:17/255. green:136/255. blue:247/255. alpha:1];
+        
     }
     
     cell.messageLabel.text = message.message;

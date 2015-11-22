@@ -30,6 +30,7 @@
 		437C8E2F1C01BCFB008D2F17 /* PlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C8E2E1C01BCFB008D2F17 /* PlayersViewController.m */; };
 		437C8E311C01BD0C008D2F17 /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437C8E301C01BD0C008D2F17 /* Players.storyboard */; };
 		437C8E341C01BEBA008D2F17 /* PlayersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C8E331C01BEBA008D2F17 /* PlayersTableViewCell.m */; };
+		437C8E371C01C904008D2F17 /* APIPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 437C8E361C01C904008D2F17 /* APIPin.m */; };
 		4380485F1C00D96B00E0EEF8 /* GameWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380485E1C00D96B00E0EEF8 /* GameWireframe.m */; };
 		438048641C00E34200E0EEF8 /* MapCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048631C00E34200E0EEF8 /* MapCreateViewController.m */; };
 		438048671C00E73800E0EEF8 /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048661C00E73800E0EEF8 /* MyLocation.m */; };
@@ -117,6 +118,8 @@
 		437C8E301C01BD0C008D2F17 /* Players.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Players.storyboard; sourceTree = "<group>"; };
 		437C8E321C01BEBA008D2F17 /* PlayersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersTableViewCell.h; sourceTree = "<group>"; };
 		437C8E331C01BEBA008D2F17 /* PlayersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersTableViewCell.m; sourceTree = "<group>"; };
+		437C8E351C01C904008D2F17 /* APIPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPin.h; sourceTree = "<group>"; };
+		437C8E361C01C904008D2F17 /* APIPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIPin.m; sourceTree = "<group>"; };
 		4380485D1C00D96B00E0EEF8 /* GameWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWireframe.h; sourceTree = "<group>"; };
 		4380485E1C00D96B00E0EEF8 /* GameWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWireframe.m; sourceTree = "<group>"; };
 		438048621C00E34200E0EEF8 /* MapCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCreateViewController.h; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				438048941C0180A700E0EEF8 /* APIMessage.m */,
 				439FB8CA1C018E53009106E9 /* APIPostMessage.h */,
 				439FB8CB1C018E53009106E9 /* APIPostMessage.m */,
+				437C8E351C01C904008D2F17 /* APIPin.h */,
+				437C8E361C01C904008D2F17 /* APIPin.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 				438048881C0143E600E0EEF8 /* APIJoinGame.m in Sources */,
 				438048741C011FC100E0EEF8 /* GameReadyViewController.m in Sources */,
 				4380486D1C00F52700E0EEF8 /* APILocation.m in Sources */,
+				437C8E371C01C904008D2F17 /* APIPin.m in Sources */,
 				430E83CA1C00B78300F072A8 /* APIUserRegister.m in Sources */,
 				438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */,
 				430E83C71C00AE4B00F072A8 /* APILoginResult.m in Sources */,

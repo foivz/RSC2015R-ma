@@ -22,4 +22,5 @@
 @property (strong, nonatomic) NSArray<APILocation> *obstacles;
 @property (strong, nonatomic) NSString<Optional> *pin;
 @property (assign, nonatomic) BOOL playing;
+@property (strong, nonatomic) NSString *won;
 @end

@@ -360,6 +360,22 @@
     
 }
 
+- (void)captureWithPin:(NSString *)pin withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure
+{
+    NSString *url = [NSString stringWithFormat:@"users/%@/capture", self.user.userID];
+    
+    APIPin *apiPin = [APIPin new];
+    apiPin.pin = pin;
+    
+    [self.manager POST:url parameters:[apiPin toDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        success(YES);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(NO);
+    }];
+    
+}
+
 @end
 
 

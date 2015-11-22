@@ -19,6 +19,7 @@
 #import "APIJoinGame.h"
 #import "APIMessage.h"
 #import "APIPostMessage.h"
+#import "APIPin.h"
 
 @interface APIManager : NSObject
 @property (strong, nonatomic) APIUser *user;
@@ -51,6 +52,8 @@
 - (void)attack;
 - (void)fallback;
 - (void)cover;
+
+- (void)captureWithPin:(NSString *)pin withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 
 - (void)killWithUserId:(NSString *)userId withSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 

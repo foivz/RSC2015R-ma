@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *thirdButton;
 @property (weak, nonatomic) IBOutlet UIButton *fourButton;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
+@property (weak, nonatomic) IBOutlet UIView *popView;
+@property (weak, nonatomic) IBOutlet UILabel *winLabel;
 
 @end
 
@@ -42,6 +45,13 @@
         self.thirdButton.hidden = YES;
         self.fourButton.hidden = YES;
         
+    }
+    
+    self.popView.alpha = 0;
+    
+    NSString *gameType = self.apiManager.currentGame.type;
+    if (![gameType isEqualToString:@"ctf"] || [self.apiManager.user.role isEqualToString:@"judge"]) {
+        self.rightBarButton.enabled = NO;
     }
     
     
@@ -82,19 +92,30 @@
 - (void)refreshGame
 {
     [[APIManager sharedInstance] refreshGameWithSuccess:^(BOOL b) {
-        if ([APIManager sharedInstance].currentGame.playing) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (![APIManager sharedInstance].currentGame.playing) {
+                NSString *wonString = [NSString stringWithFormat:@"Team %@ is victourious",[APIManager sharedInstance].currentGame.won];
+                
+                
+                self.winLabel.text = wonString;
+                
+                
+                self.popView.transform = CGAffineTransformMakeTranslation(0, self.popView.frame.size.height);
+                [UIView animateWithDuration:0.5 animations:^{
+                    
+                    self.popView.transform = CGAffineTransformIdentity;
+                    self.popView.alpha = 1;
+                    
+                }];
+            } else
+            {
+                
                 [self reloadPois];
                 [self refreshGame];
-            });
-            
-        } else {
-            //game over
-        }
-        
+            }
+           
+        });
         
     } failure:^(BOOL b) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -181,6 +202,38 @@
     
     return nil;
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSString *pinCode = [alertView textFieldAtIndex:0].text;
+        NSLog(@"%@",[[alertView textFieldAtIndex:0] text]);
+        
+        
+        [SVProgressHUD showWithStatus:@"Taking the flag!"];
+        [[APIManager sharedInstance] captureWithPin:pinCode withSuccess:^(BOOL b) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"Flag taken"];
+            
+        } failure:^(BOOL b) {
+            [SVProgressHUD showErrorWithStatus:@"Failed to take a flag"];
+        }];
+
+    }
+}
+
+- (IBAction)clickedRightBarButton:(UIBarButtonItem *)sender {
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Enter flag code:"  message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok",nil];
+    
+    
+    
+    [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+    UITextField* tf = [alertView textFieldAtIndex:0];
+    tf.keyboardType = UIKeyboardTypeNumberPad;
+    [alertView show];
+    
+}
+
 
 - (IBAction)deadButton:(UIButton *)sender {
     
