@@ -32,6 +32,37 @@ class User < ActiveRecord::Base
   # Team messages
   has_many :team_messages
 
+  # Statistics
+  has_many :user_statistics
+
+  def has_statistics
+    self.user_statistics.exists?
+  end
+
+  def min_duration
+    self.user_statistics.minimum(:duration_alive)
+  end
+
+  def max_duration
+    self.user_statistics.maximum(:duration_alive)
+  end
+
+  def avg_duration
+    self.user_statistics.average(:duration_alive)
+  end
+
+  def death_count
+    self.user_statistics.where(died: true).length
+  end
+
+  def win_count
+    self.user_statistics.where(won: true).length
+  end
+
+  def loss_count
+    self.user_statistics.where(won: false).length
+  end
+
 private
   def set_active
     self.active = true
