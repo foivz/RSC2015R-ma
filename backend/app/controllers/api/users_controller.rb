@@ -78,6 +78,10 @@ class Api::UsersController < Api::ApiBaseController
 
   def kill
     @user.update_attributes(alive: false)
+
+    # Send killed message
+    TeamMessage.create(user_id: @user.id, team_id: @user.team_id, message: killed_message)
+
     render :show
   end
 
@@ -93,5 +97,9 @@ class Api::UsersController < Api::ApiBaseController
   def set_user
     @user = User.find_by_id(params[:id])
     render_not_found('User with specified id does not exist.') if @user.blank?
+  end
+
+  def killed_message
+    "#{@user.name} has been killed!"
   end
 end
