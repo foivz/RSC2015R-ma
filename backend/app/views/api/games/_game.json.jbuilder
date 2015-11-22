@@ -34,6 +34,6 @@ end
 
 json.obstacles do
   json.array!(game.obstacles) do |obstacle|
-    json.extract! obstacle, :latitude, :longitude, :type, :team_id
+    json.extract! obstacle, :latitude, :longitude, :type
   end
 end
