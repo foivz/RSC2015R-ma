@@ -138,6 +138,7 @@ class Api::UsersController < Api::ApiBaseController
       # Update game state
       game.playing = false
       game.won = this_team.name
+      game.save
 
       # Update statistics
       duration_alive = ((DateTime.now - game.start_date.to_datetime) * 24 * 60 * 60).to_i
@@ -160,6 +161,9 @@ class Api::UsersController < Api::ApiBaseController
           statistic.save
         end
       end
+      render :show
+    else
+      render_not_found('Wrong pin')
     end
   end
 
