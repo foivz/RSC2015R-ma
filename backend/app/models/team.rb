@@ -18,6 +18,6 @@ class Team < ActiveRecord::Base
   end
 
   def dead_count
-    self.total_count - self.alive_count
+    self.joined_count - self.alive_count
   end
 end

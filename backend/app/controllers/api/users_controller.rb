@@ -89,10 +89,31 @@ class Api::UsersController < Api::ApiBaseController
     opponent_team.score += 1
     opponent_team.save
 
+    # Insert record in statistics table
+    duration_alive = ((DateTime.now - game.start_date.to_datetime) * 24 * 60 * 60).to_i
+    UserStatistic.create(user_id: @user.id, game_id: game.id, died: true, duration_alive: duration_alive)
+
     # Is game over?
     this_team = Team.find_by_id(@user.team_id)
     if this_team.alive_count == 0
       game.playing = false
+
+      this_team.users.each do |player|
+        statistic = UserStatistic.where(user_id: player.id, game_id: game.id).take
+        statistic.won = false
+        statistic.save
+      end
+
+      opponent_team.users.each do |player|
+        if player.alive
+          UserStatistic.create(user_id: player.id, game_id: game.id, died: false, duration_alive: duration_alive, won: true)
+        else
+          statistic = UserStatistic.where(user_id: player.id, game_id: game.id).take
+          statistic.won = true
+          statistic.save
+        end
+      end
+
       game.save
     end
 

@@ -27,6 +27,9 @@ Rails.application.routes.draw do
 
     resources :team_messages, only: [:index, :inbox, :create] do
       get :inbox, path: 'inbox', on: :collection
+      post :attack, path: 'attack', on: :collection
+      post :fallback, path: 'fallback', on: :collection
+      post :cover, path: 'cover', on: :collection
     end
   end
 end

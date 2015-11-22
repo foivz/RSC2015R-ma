@@ -6,7 +6,17 @@ class Api::TeamMessagesController < Api::ApiBaseController
   end
 
   def inbox
-    @team_messages = TeamMessage.where(team_id: params[:team_id]).order(:created_at)
+    team = params[:team].downcase
+    game = @logged_in_user.game
+    team_id = team == 'a' ? game.team_a.id : game.team_b.id
+
+    if team_id.present?
+      @team_messages = TeamMessage.where(team_id: team_id)
+    else
+      @team_messages = TeamMessage.where(team_id: @logged_in_user.team_id)
+    end
+
+    @team_messages = @team_messages.order(:created_at)
     render :index
   end
 
@@ -23,7 +33,33 @@ class Api::TeamMessagesController < Api::ApiBaseController
     render :show, status: :created
   end
 
+  def attack
+    team_message = prepare_team_message(:attack)
+    @team_message = TeamMessage.create(team_message)
+    render :show, status: :created
+  end
+
+  def fallback
+    team_message = prepare_team_message(:fallback)
+    @team_message = TeamMessage.create(team_message)
+    render :show, status: :created
+  end
+
+  def cover
+    team_message = prepare_team_message(:cover)
+    @team_message = TeamMessage.create(team_message)
+    render :show, status: :created
+  end
+
   protected
+  def prepare_team_message(type)
+    {
+      user_id: @logged_in_user.id,
+      team_id: @logged_in_user.team_id,
+      message: PREDEFINED_MESSAGES[type]
+    }
+  end
+
   def team_message_params
     params.permit(:user_id, :team_id, :message, :type)
   end
