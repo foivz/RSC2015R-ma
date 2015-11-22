@@ -31,7 +31,6 @@ class GamesService {
     }
 
     return this.$http.get(this.config.apiUrl + '/games/' + g.id).then((data) => {
-      debugger;
       return this.parseGameData(data);
     }).catch((e) => {
       throw new Error(e);

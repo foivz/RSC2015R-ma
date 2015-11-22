@@ -3,7 +3,8 @@ class ProfileController {
     'ngInject';
 
     profileService.getUser($state.params.id).then((data) => {
-      this.name = data.username;
+      this.username = data.username;
+      this.name = data.name;
       this.deaths = 0;
       this.wins = 0;
       this.loses = 0;
