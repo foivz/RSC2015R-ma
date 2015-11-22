@@ -6,11 +6,11 @@ class Team < ActiveRecord::Base
   has_many :team_messages
 
   def joined_count
-    User.where(team_id: self.id).length
+    User.where(team_id: self.id, role: User.roles[:player]).length
   end
 
   def alive_count
-    User.where(team_id: self.id, alive: true).length
+    User.where(team_id: self.id, alive: true, role: User.roles[:player]).length
   end
 
   def total_count

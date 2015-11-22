@@ -20,15 +20,15 @@ class Game < ActiveRecord::Base
   has_many :obstacles
 
   def joined_count
-    User.where(game_id: self.id).length
+    User.where(game_id: self.id, role: User.roles[:player]).length
   end
 
   def alive_count
-    User.where(game_id: self.id, alive: true).length
+    User.where(game_id: self.id, alive: true, role: User.roles[:player]).length
   end
 
   def total_count
-    self.team_a.count + self.team_b.count
+    self.team_a.count + self.team_b.counte
   end
 
   def dead_count
