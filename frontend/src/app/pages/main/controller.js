@@ -1,4 +1,5 @@
 import Player from '../../components/player';
+import MapObject from '../../components/map-object';
 
 class MainController {
   constructor($scope, mainService, uiGmapGoogleMapApi, updaterService) {
@@ -10,6 +11,7 @@ class MainController {
 
     this.setMapInformation();
     this.setTeamsAndPlayers();
+    this.setOtherMarkerInfo();
     this.setAllMarkers();
 
     this.updaterService.startUpdates(this.update, this);
@@ -50,7 +52,7 @@ class MainController {
 
   setAllMarkers() {
     this.markers = [];
-    this.markers = this.markers.concat(this.players);
+    this.markers = this.markers.concat(this.players).concat(this.obstacles).concat(this.teamFlags);
   }
 
   setTeamsAndPlayers() {
@@ -58,7 +60,7 @@ class MainController {
     let teamA = this.game.team_a;
     let teamB = this.game.team_b;
     let teamAPlayers = teamA.players.map((el) => {
-      var x = new Player(el.id, {
+      var x = new Player(el.id, 'playerA', {
         latitude: parseFloat(el.latitude),
         longitude: parseFloat(el.longitude)
       }, teamA.name, el.name);
@@ -71,7 +73,7 @@ class MainController {
       return x;
     });
     let teamBPlayers = teamB.players.map((el) => {
-      var x = new Player(el.id, {
+      var x = new Player(el.id, 'playerB', {
         latitude: parseFloat(el.latitude),
         longitude: parseFloat(el.longitude)
       }, teamB.name, el.name);
@@ -87,7 +89,7 @@ class MainController {
     this.team = {
       A: {
         name: teamA.name,
-        count: teamA.count,
+        count: teamA.total_count,
         position: {
           latitude: parseFloat(teamA.latitude),
           longitude: parseFloat(teamA.longitude)
@@ -97,7 +99,7 @@ class MainController {
       },
       B: {
         name: teamB.name,
-        count: teamB.count,
+        count: teamB.total_count,
         position: {
           latitude: parseFloat(teamB.latitude),
           longitude: parseFloat(teamB.longitude)
@@ -108,6 +110,21 @@ class MainController {
     };
 
     this.updateAlive();
+  }
+
+  setOtherMarkerInfo() {
+    this.obstacles = [];
+    this.game.obstacles.forEach((el) => {
+      this.obstacles.push(new MapObject(el.id, el.type, {
+        latitude: parseFloat(el.latitude),
+        longitude: parseFloat(el.longitude)
+      }));
+    });
+
+    this.teamFlags = [
+      new MapObject(this.game.team_a.id, 'startA', {latitude: parseFloat(this.game.team_a.latitude), longitude: parseFloat(this.game.team_a.longitude)}),
+      new MapObject(this.game.team_b.id, 'startB', {latitude: parseFloat(this.game.team_b.latitude), longitude: parseFloat(this.game.team_b.longitude)})
+    ];
   }
 
   update(data) {
@@ -165,7 +182,7 @@ class MainController {
     if (this.map.refresh) {
       this.map.refresh();
     }
-    
+
     if (!this.$scope.$$phase) {
       this.$scope.$apply();
     }

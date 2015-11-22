@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'colors';
+@import 'variables';
+
+$ios-border: #B8C5CC;
+$ios-text: #333333;
+$ios-text-high: #889FAC;
+$ios-text-gray: #ADADAD;
+
+.ios-list {
+  font-size: 16px;
+  border-bottom: 1px solid $ios-border;
+
+  &__item {
+    height: 44px;
+    padding: 15px;
+    padding-left: 0;
+    margin-left: 15px;
+    border-bottom: 1px solid $ios-border;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__key {
+    color: $ios-text;
+    float: left;
+  }
+
+  &__value {
+    color: $ios-text-high;
+    float: right;
+  }
+}
+
+.ios-delimiter {
+  color: $ios-text-gray;
+  font-size: 13px;
+  height: 40px;
+  padding: 24px 15px 0;
+}

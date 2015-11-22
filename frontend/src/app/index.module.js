@@ -11,9 +11,11 @@ import UpdaterService from './services/updater.service';
 
 import MainService from './pages/main/service';
 import GamesService from './pages/games/service';
+import ProfileService from './pages/profile/service';
 
 import MainController from './pages/main/controller';
 import GamesController from './pages/games/controller';
+import ProfileController from './pages/profile/controller';
 
 import ClockDirective from './directives/clock/directive';
 
@@ -41,9 +43,11 @@ angular.module('paintballWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize
 
   .service('mainService', MainService)
   .service('gamesService', GamesService)
+  .service('profileService', ProfileService)
 
   .controller('MainController', MainController)
   .controller('GamesController', GamesController)
+  .controller('ProfileController', ProfileController)
 
   .directive('clock', () => new ClockDirective());
 

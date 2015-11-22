@@ -60,7 +60,7 @@
         stroke='{color: "#00FF00", opacity: "0.4"}'
       >
       </ui-gmap-rectangle>
-      <ui-gmap-marker ng-repeat="marker in main.markers track by $index" idKey='marker.id' coords='marker.getPosition()' control='marker'></ui-gmap-marker>
+      <ui-gmap-marker ng-repeat="marker in main.markers track by $index" idKey='marker.id' coords='marker.getPosition()' control='marker' options="{icon: marker.icon}"></ui-gmap-marker>
     </ui-gmap-google-map>
   </section>
 </div>

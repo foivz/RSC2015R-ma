@@ -1,8 +1,8 @@
 import MapObject from './map-object';
 
 class Player extends MapObject {
-  constructor(id, position, team, name) {
-    super(id, position);
+  constructor(id, type, position, team, name) {
+    super(id, type, position);
     this.setTeam(team);
     this.setName(name);
     this.isEliminated = false;
