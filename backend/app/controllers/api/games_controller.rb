@@ -32,12 +32,7 @@ class Api::GamesController < Api::ApiBaseController
     # Obstacles
     obstacles_data = params[:obstacles]
     obstacles_data.each do |obstacle_data|
-      obstacle_data[:team].tap do |team|
-        obstacle_data[:team_id] = team_a.id if team == 'A'
-        obstacle_data[:team_id] = team_b.id if team == 'B'
-      end
-
-      Obstacle.create(game_id: @game.id, team_id: obstacle_data[:team_id], type: obstacle_data[:type],
+      Obstacle.create(game_id: @game.id, type: obstacle_data[:type],
         latitude: obstacle_data[:latitude], longitude: obstacle_data[:longitude])
     end
 
@@ -83,10 +78,10 @@ class Api::GamesController < Api::ApiBaseController
     Field.update(@game.field_id, occupied: false)
 
     # Delete teams
-    @game.team_a.destroy
-    @game.team_b.destroy
+    @game.team_a.update_attributes(active: false)
+    @game.team_b.update_attributes(active: false)
 
-    @game.update_attributes(active: false)
+    @game.update_attributes(active: false, playing: false, players_in: false)
     render :show
   end
 
