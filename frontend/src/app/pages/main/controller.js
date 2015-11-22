@@ -182,6 +182,8 @@ class MainController {
           if (!p.alive) {
             el.eliminate();
           }
+
+          el.player = p;
         }
       });
       data.team_b.players.forEach((p) => {
