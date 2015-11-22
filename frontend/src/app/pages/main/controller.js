@@ -196,7 +196,10 @@ class MainController {
           if (!p.alive) {
             el.eliminate();
           }
+          
+          el.player = p;
         }
+
       });
     });
 
