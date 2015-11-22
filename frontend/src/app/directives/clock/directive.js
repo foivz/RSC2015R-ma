@@ -7,7 +7,9 @@ class ClockController {
     setInterval(() => {
       this.currentTime--;
       this.calculateTimes();
-      $scope.$apply();
+      if (!$scope.$$phase) {
+        $scope.$apply();
+      }
     }, 1000);
   }
 

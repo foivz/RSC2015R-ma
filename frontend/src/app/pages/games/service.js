@@ -11,8 +11,8 @@ class GamesService {
       var games = [this.mock.getData().game];
       return Promise.resolve(games);
     }
-    return this.$http.get(this.config.apiUrl + '/games').then((data) => {
-      this.parseGamesData(data);
+    return this.$http.get(this.config.apiUrl + '/games?active=true').then((data) => {
+      return this.parseGamesData(data);
     }).catch((e) => {
       throw new Error(e);
     });
@@ -29,14 +29,14 @@ class GamesService {
     }
 
     return this.$http.get(this.config.apiUrl + '/games/' + g.id).then((data) => {
-      this.parseGameData(data);
+      return this.parseGameData(data);
     }).catch((e) => {
       throw new Error(e);
     });
   }
 
   parseGameData(data) {
-    this.data = data.game;
+    this.data = data.data.game;
     return this.data;
   }
 }

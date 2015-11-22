@@ -8,8 +8,8 @@ class GamesController {
     gamesService.getGames().then((data) => {
       this.games = data;
       this.games.forEach((game) => {
-        var latitude = (game.field.latitude_nw + game.field.latitude_se) / 2;
-        var longitude = (game.field.longitude_nw + game.field.longitude_se) / 2;
+        var latitude = (parseFloat(game.field.latitude_nw) + parseFloat(game.field.latitude_se)) / 2;
+        var longitude = (parseFloat(game.field.longitude_nw) + parseFloat(game.field.longitude_se)) / 2;
 
         game.map = {
           center: {
@@ -20,7 +20,8 @@ class GamesController {
           options: {
             disableDefaultUI: true,
             draggable: false,
-            zoomControl: false
+            zoomControl: false,
+            scrollwheel: false
           }
         };
 
@@ -32,8 +33,8 @@ class GamesController {
             name: teamA.name,
             count: teamA.count,
             position: {
-              latitude: teamA.latitude,
-              longitude: teamA.longitude
+              latitude: parseFloat(teamA.latitude),
+              longitude: parseFloat(teamA.longitude)
             },
             score: teamA.score
           },
@@ -41,8 +42,8 @@ class GamesController {
             name: teamB.name,
             count: teamB.count,
             position: {
-              latitude: teamB.latitude,
-              longitude: teamB.longitude
+              latitude: parseFloat(teamB.latitude),
+              longitude: parseFloat(teamB.longitude)
             },
             score: teamB.score
           }
