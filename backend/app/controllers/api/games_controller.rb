@@ -4,10 +4,10 @@ class Api::GamesController < Api::ApiBaseController
 
   before_action :set_game, only: [:show, :destroy, :ready, :start]
 
-  # skip_before_action :check_access_token
+  skip_before_action :check_access_token, only: [:index, :show]
 
   def index
-    @games = Game.all
+    @games = Game.filter(filtering_params)
   end
 
   def create
@@ -19,6 +19,10 @@ class Api::GamesController < Api::ApiBaseController
     # Team B
     team_b_data = params[:team_b]
     team_b = Team.create(name: 'B', count: count, latitude: team_b_data[:latitude], longitude: team_b_data[:longitude])
+
+    # Field
+    field_id = params[:field_id]
+    Field.update(field_id, occupied: true)
 
     # Game
     game_data = params
@@ -62,7 +66,7 @@ class Api::GamesController < Api::ApiBaseController
   end
 
   def start
-    @game.update_attributes(playing: true)
+    @game.update_attributes(playing: true, start_date: Date.now)
     render :show
   end
 
@@ -75,11 +79,14 @@ class Api::GamesController < Api::ApiBaseController
       player.update_attributes(game_id: nil, team_id: nil, ready: false)
     end
 
+    # Release field
+    Field.update(@game.field_id, occupied: false)
+
     # Delete teams
     @game.team_a.destroy
     @game.team_b.destroy
 
-    @game.destroy
+    @game.update_attributes(active: false)
     render :show
   end
 
@@ -91,5 +98,9 @@ class Api::GamesController < Api::ApiBaseController
 
   def game_params
     params.require(:game).permit(:name, :field_id, :type, :duration)
+  end
+
+  def filtering_params
+    params.permit(:active, :playing)
   end
 end

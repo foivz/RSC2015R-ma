@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   enum type: [:ctf, :elimination]
 
   before_create :generate_pin
+  before_create :set_active
 
   # Teams
   belongs_to :team_a, class_name: 'Team'
@@ -30,11 +31,20 @@ class Game < ActiveRecord::Base
     self.team_a.count + self.team_b.count
   end
 
+  #Filterable
+  include Filterable
+  scope :active, -> (active) { where active: active }
+  scope :playing, -> (playing) { where playing: playing }
+
 protected
   def generate_pin
     begin
       self.pin = (1..PIN_LENGTH).map{PIN_DIGITS.chars.to_a.sample}.join
     end while self.class.exists?(pin: pin, active: true)
+  end
+
+  def set_active
+    self.active = true
   end
 
 private
