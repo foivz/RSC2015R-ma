@@ -11,7 +11,7 @@ class GamesService {
       var games = [this.mock.getData().game];
       return Promise.resolve(games);
     }
-    return this.$http.get(this.config.apiUrl + '/games?active=true').then((data) => {
+    return this.$http.get(this.config.apiUrl + '/games?active=true&playing=true').then((data) => {
       return this.parseGamesData(data);
     }).catch((e) => {
       throw new Error(e);

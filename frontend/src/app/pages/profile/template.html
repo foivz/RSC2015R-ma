@@ -4,13 +4,17 @@
       <div class="ios-list__key">Username</div>
       <div class="ios-list__value">{{profile.username}}</div>
     </div>
-    <div class="ios-list__item">
+    <div class="ios-list__item is-judge" ng-show="profile.isJudge">
+      <div class="ios-list__key">Status</div>
+      <div class="ios-list__value">Judge</div>
+    </div>
+    <div class="ios-list__item" ng-show="!profile.isJudge">
       <div class="ios-list__key">Name</div>
       <div class="ios-list__value">{{profile.name}}</div>
     </div>
   </div>
-  <div class="ios-delimiter">Stats</div>
-  <div class="ios-list">
+  <div class="ios-delimiter" ng-show="!profile.isJudge">Stats</div>
+  <div class="ios-list" ng-show="!profile.isJudge">
     <div class="ios-list__item">
       <div class="ios-list__key">Deaths</div>
       <div class="ios-list__value">{{profile.deaths}}</div>
@@ -22,6 +26,18 @@
     <div class="ios-list__item">
       <div class="ios-list__key">Loses</div>
       <div class="ios-list__value">{{profile.loses}}</div>
+    </div>
+    <div class="ios-list__item">
+      <div class="ios-list__key">Shortest time alive</div>
+      <div class="ios-list__value">{{profile.minDuration}}</div>
+    </div>
+    <div class="ios-list__item">
+      <div class="ios-list__key">Highest time alive</div>
+      <div class="ios-list__value">{{profile.maxDuration}}</div>
+    </div>
+    <div class="ios-list__item">
+      <div class="ios-list__key">Average time alive</div>
+      <div class="ios-list__value">{{profile.avgDuration}}</div>
     </div>
   </div>
 </div>
