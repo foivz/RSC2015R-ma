@@ -10,9 +10,6 @@ class Api::TeamMessagesController < Api::ApiBaseController
     game = @logged_in_user.game
     team_id = (team == 'a') ? game.team_a.id : game.team_b.id
 
-    render json: game.team_a.id
-    return
-
     if team_id.present?
       @team_messages = TeamMessage.where(team_id: team_id)
     else
