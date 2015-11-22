@@ -163,6 +163,20 @@
     return nil;
 }
 
+- (IBAction)deadButton:(UIButton *)sender {
+}
+
+- (IBAction)forwardbutton:(UIButton *)sender {
+    [self.apiManager attack];
+}
+
+- (IBAction)backButton:(UIButton *)sender {
+    [self.apiManager fallback];
+}
+
+- (IBAction)needHelp:(UIButton *)sender {
+    [self.apiManager cover];
+}
 
 
 @end

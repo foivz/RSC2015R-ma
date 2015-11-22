@@ -234,9 +234,9 @@
                                     <action selector="valueChangedOnSegemnt:" destination="24i-lB-jpz" eventType="valueChanged" id="YTg-Jv-WNp"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a76-4p-KRv">
-                                <rect key="frame" x="254" y="464" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a76-4p-KRv">
+                                <rect key="frame" x="250" y="444" width="50" height="50"/>
+                                <state key="normal" image="button_setpin"/>
                                 <connections>
                                     <action selector="addPoiButton:" destination="24i-lB-jpz" eventType="touchUpInside" id="t9s-LF-dMd"/>
                                 </connections>
@@ -548,13 +548,53 @@
                                     <outlet property="delegate" destination="Jsf-5R-DAR" id="5ii-el-4bP"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZq-ql-wRQ">
+                                <rect key="frame" x="165" y="508" width="65" height="50"/>
+                                <state key="normal" title="Button" image="button_fallback"/>
+                                <connections>
+                                    <action selector="backButton:" destination="Jsf-5R-DAR" eventType="touchUpInside" id="dtA-EW-H5V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsw-Tp-82y">
+                                <rect key="frame" x="90" y="508" width="65" height="50"/>
+                                <state key="normal" image="button_forward"/>
+                                <connections>
+                                    <action selector="forwardbutton:" destination="Jsf-5R-DAR" eventType="touchUpInside" id="PgZ-Cz-ymu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvl-ff-yGf">
+                                <rect key="frame" x="15" y="508" width="65" height="50"/>
+                                <state key="normal" image="button_imeliminated"/>
+                                <connections>
+                                    <action selector="deadButton:" destination="Jsf-5R-DAR" eventType="touchUpInside" id="Q5A-cf-FVl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-mv-Kah">
+                                <rect key="frame" x="240" y="508" width="65" height="50"/>
+                                <state key="normal" image="button_needhelp"/>
+                                <connections>
+                                    <action selector="needHelp:" destination="Jsf-5R-DAR" eventType="touchUpInside" id="7k7-Jy-wnq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kam-ax-07r" firstAttribute="top" secondItem="lzr-UQ-5nK" secondAttribute="bottom" id="2MP-2a-h3B"/>
+                            <constraint firstItem="Wuu-mv-Kah" firstAttribute="bottom" secondItem="sZq-ql-wRQ" secondAttribute="bottom" id="GWE-z2-Ckw"/>
+                            <constraint firstItem="Bsw-Tp-82y" firstAttribute="bottom" secondItem="Qvl-ff-yGf" secondAttribute="bottom" id="JMo-vq-YhF"/>
+                            <constraint firstItem="Wuu-mv-Kah" firstAttribute="leading" secondItem="sZq-ql-wRQ" secondAttribute="trailing" constant="10" id="KZO-yJ-kzK"/>
                             <constraint firstItem="kam-ax-07r" firstAttribute="leading" secondItem="eLt-CB-qTi" secondAttribute="leading" id="LIA-eD-hhe"/>
+                            <constraint firstItem="Bsw-Tp-82y" firstAttribute="width" secondItem="sZq-ql-wRQ" secondAttribute="width" id="Rt9-dq-zrJ"/>
                             <constraint firstAttribute="trailing" secondItem="kam-ax-07r" secondAttribute="trailing" id="TTQ-0b-ZX1"/>
+                            <constraint firstAttribute="trailing" secondItem="Wuu-mv-Kah" secondAttribute="trailing" constant="15" id="blH-Fu-CCg"/>
+                            <constraint firstItem="sZq-ql-wRQ" firstAttribute="leading" secondItem="Bsw-Tp-82y" secondAttribute="trailing" constant="10" id="cDG-9S-rdq"/>
+                            <constraint firstItem="Fus-BD-cbd" firstAttribute="top" secondItem="Qvl-ff-yGf" secondAttribute="bottom" constant="10" id="cdi-2M-PJa"/>
+                            <constraint firstItem="sZq-ql-wRQ" firstAttribute="width" secondItem="Wuu-mv-Kah" secondAttribute="width" id="eGn-ZC-BZ7"/>
+                            <constraint firstItem="Bsw-Tp-82y" firstAttribute="leading" secondItem="Qvl-ff-yGf" secondAttribute="trailing" constant="10" id="gCf-np-S88"/>
+                            <constraint firstItem="sZq-ql-wRQ" firstAttribute="bottom" secondItem="Bsw-Tp-82y" secondAttribute="bottom" id="jyc-Kf-g63"/>
+                            <constraint firstItem="Qvl-ff-yGf" firstAttribute="leading" secondItem="eLt-CB-qTi" secondAttribute="leading" constant="15" id="txN-Hb-mfY"/>
                             <constraint firstItem="Fus-BD-cbd" firstAttribute="top" secondItem="kam-ax-07r" secondAttribute="bottom" id="vi2-y2-Ffq"/>
+                            <constraint firstItem="Qvl-ff-yGf" firstAttribute="width" secondItem="Bsw-Tp-82y" secondAttribute="width" id="yk6-bT-qKs"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -565,10 +605,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgb-Lk-NWI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-351"/>
+            <point key="canvasLocation" x="1471" y="-377"/>
         </scene>
     </scenes>
     <resources>
+        <image name="button_fallback" width="50" height="50"/>
+        <image name="button_forward" width="50" height="50"/>
+        <image name="button_imeliminated" width="50" height="50"/>
+        <image name="button_needhelp" width="50" height="50"/>
+        <image name="button_setpin" width="50" height="50"/>
         <image name="helmet_graphic" width="103" height="132"/>
         <image name="pin_flag_a" width="16" height="31"/>
         <image name="ready_placeholder" width="24" height="24"/>

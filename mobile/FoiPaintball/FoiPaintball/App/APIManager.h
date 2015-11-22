@@ -42,4 +42,9 @@
 
 - (void)playerIsReadyWithSuccess:(void (^)(BOOL))success failure:(void (^)(BOOL))failure;
 - (void)postLocation;
+
+- (void)attack;
+- (void)fallback;
+- (void)cover;
+
 @end

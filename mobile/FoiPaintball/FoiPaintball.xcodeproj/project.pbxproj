@@ -39,6 +39,9 @@
 		438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048801C013A2A00E0EEF8 /* PlayGameViewController.m */; };
 		438048851C01423C00E0EEF8 /* IntroPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048841C01423C00E0EEF8 /* IntroPlayerViewController.m */; };
 		438048881C0143E600E0EEF8 /* APIJoinGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048871C0143E600E0EEF8 /* APIJoinGame.m */; };
+		4380488D1C0178AF00E0EEF8 /* CommunicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380488C1C0178AF00E0EEF8 /* CommunicationViewController.m */; };
+		4380488F1C0178BF00E0EEF8 /* Communication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4380488E1C0178BF00E0EEF8 /* Communication.storyboard */; };
+		438048921C017B4000E0EEF8 /* CommunicationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */; };
 		C888254D123B57A7F81F65B8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C0C09C55479FAD3FA9165F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,11 @@
 		438048841C01423C00E0EEF8 /* IntroPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPlayerViewController.m; sourceTree = "<group>"; };
 		438048861C0143E600E0EEF8 /* APIJoinGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIJoinGame.h; sourceTree = "<group>"; };
 		438048871C0143E600E0EEF8 /* APIJoinGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIJoinGame.m; sourceTree = "<group>"; };
+		4380488B1C0178AF00E0EEF8 /* CommunicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationViewController.h; sourceTree = "<group>"; };
+		4380488C1C0178AF00E0EEF8 /* CommunicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationViewController.m; sourceTree = "<group>"; };
+		4380488E1C0178BF00E0EEF8 /* Communication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Communication.storyboard; sourceTree = "<group>"; };
+		438048901C017B4000E0EEF8 /* CommunicationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationTableViewCell.h; sourceTree = "<group>"; };
+		438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationTableViewCell.m; sourceTree = "<group>"; };
 		897B50E8E616024860B32014 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3004BA700C0D4F8B8C6214F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +184,7 @@
 		430E83931C0091EF00F072A8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4380488A1C01789700E0EEF8 /* Communication */,
 				436DCF5A1C00CE6E0036D7BA /* New Game */,
 				430E83A41C009E0600F072A8 /* Onboarding */,
 				430E83941C00921D00F072A8 /* Common */,
@@ -348,6 +357,18 @@
 			path = "Intro Player";
 			sourceTree = "<group>";
 		};
+		4380488A1C01789700E0EEF8 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				4380488B1C0178AF00E0EEF8 /* CommunicationViewController.h */,
+				4380488C1C0178AF00E0EEF8 /* CommunicationViewController.m */,
+				4380488E1C0178BF00E0EEF8 /* Communication.storyboard */,
+				438048901C017B4000E0EEF8 /* CommunicationTableViewCell.h */,
+				438048911C017B4000E0EEF8 /* CommunicationTableViewCell.m */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		DCA04863E08F62635AEB8D2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +451,7 @@
 				430E83881C008D0B00F072A8 /* Assets.xcassets in Resources */,
 				436DCF5C1C00CE9E0036D7BA /* NewGame.storyboard in Resources */,
 				430E83A61C009E2400F072A8 /* Onboarding.storyboard in Resources */,
+				4380488F1C0178BF00E0EEF8 /* Communication.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +515,7 @@
 				430E83C41C00AE2C00F072A8 /* APIUser.m in Sources */,
 				430E83AD1C009F2600F072A8 /* IntroViewController.m in Sources */,
 				430E83BA1C00AACA00F072A8 /* APIManager.m in Sources */,
+				4380488D1C0178AF00E0EEF8 /* CommunicationViewController.m in Sources */,
 				438048671C00E73800E0EEF8 /* MyLocation.m in Sources */,
 				430E83981C00926300F072A8 /* PaintBallApp.m in Sources */,
 				430E83C11C00AE0600F072A8 /* APIRegister.m in Sources */,
@@ -512,6 +535,7 @@
 				430E83CA1C00B78300F072A8 /* APIUserRegister.m in Sources */,
 				438048811C013A2A00E0EEF8 /* PlayGameViewController.m in Sources */,
 				430E83C71C00AE4B00F072A8 /* APILoginResult.m in Sources */,
+				438048921C017B4000E0EEF8 /* CommunicationTableViewCell.m in Sources */,
 				4380487A1C01248E00E0EEF8 /* APIPlayer.m in Sources */,
 				436DCF641C00CF740036D7BA /* CreateNewGameViewController.m in Sources */,
 				438048641C00E34200E0EEF8 /* MapCreateViewController.m in Sources */,

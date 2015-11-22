@@ -254,6 +254,36 @@
     return [strApplicationUUID stringByReplacingOccurrencesOfString:@"-" withString:@""];
 }
 
+- (void)attack
+{
+    NSString *url = @"team_messages/attack";
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+ 
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    }];
+}
 
+- (void)fallback
+{
+    NSString *url = @"team_messages/fallback";
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    }];
+
+}
+
+- (void)cover
+{
+    NSString *url = @"team_messages/cover";
+    
+    [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    }];
+
+}
 
 @end

@@ -13,6 +13,7 @@
 #import "GameWireframe.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "APIManager.h"
+#import "CommunicationViewController.h"
 
 @interface PaintBallApp() <OnboardingWireframeOutput>
 @property (strong, nonatomic) UIWindow *window;
@@ -68,6 +69,13 @@
    // [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     //keep splash screen and make login
+    
+    //communication
+    UIStoryboard *communicationStoryboard = [UIStoryboard storyboardWithName:@"Communication" bundle:nil];
+    CommunicationViewController *communicationView = communicationStoryboard.instantiateInitialViewController;
+    UINavigationController *navigationCont = [self.paintballTabBarViewController.viewControllers objectAtIndex:1];
+    [navigationCont pushViewController:communicationView animated:YES];
+    
     
     //gamewireframe
     self.gameWireframe = [GameWireframe setUpWithNavigationController:[self.paintballTabBarViewController.viewControllers objectAtIndex:0]];
