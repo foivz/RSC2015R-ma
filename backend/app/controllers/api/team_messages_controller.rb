@@ -14,12 +14,24 @@ class Api::TeamMessagesController < Api::ApiBaseController
     team_message = team_message_params
     team_message[:user_id] = @logged_in_user.id
 
+    if team_message[:type].present?
+      team_message[:message] = PREDEFINED_MESSAGES[team_message[:type].to_sym]
+      team_message.delete(:type)
+    end
+
     @team_message = TeamMessage.create(team_message)
     render :show, status: :created
   end
 
   protected
   def team_message_params
-    params.permit(:user_id, :team_id, :message)
+    params.permit(:user_id, :team_id, :message, :type)
   end
+
+private
+  PREDEFINED_MESSAGES = {
+      attack: 'Attack!',
+      fallback: 'Fallback!',
+      cover: 'I need cover!'
+  }
 end
