@@ -29,12 +29,63 @@
       </div>
     </div>
     <ul class="player-list">
-      <li class="player-list__item" ng-repeat="player in main.team.A.players" ng-class="player.isEliminated ? 'is-dead' : ''">
+      <li class="player-list__item" ng-repeat="player in main.team.A.players" ng-class="main.getClasses(player)" ng-click="main.onPlayerClick(player)">
         <div class="player-list__name">
           {{player.name}}
         </div>
       </li>
     </ul>
+  </div>
+  <div class="players players--details" ng-show="main.curPlayer">
+    <div class="player-data" ng-class="main.curPlayer.team">
+      <div class="player-data__title">{{main.curPlayer.name}}'s stats</div>
+      <div class="player-data__container">
+        <div class="player-data__column">
+          <div class="player-data__data">
+            <span>
+              {{main.curPlayer.statistics.win_count}}
+            </span>
+            <div class="player-data__data-sub win">
+              WINS
+            </div>
+          </div>
+        </div>
+        <div class="player-data__column">
+          <div class="player-data__data">
+            <span>
+              {{main.curPlayer.statistics.loss_count}}
+            </span>
+            <div class="player-data__data-sub loss">
+              LOSES
+            </div>
+          </div>
+        </div>
+        <div class="player-data__column">
+          <div class="player-data__data">
+            <span>
+              {{main.curPlayer.statistics.death_count}}
+            </span>
+            <div class="player-data__data-sub death">
+              DEATHS
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="player-data__container">
+        <div class="player-data__column"></div>
+        <div class="player-data__column">
+          <div class="player-data__data">
+            <span>
+              {{main.getGoodTime(main.curPlayer.statistics.avg_duration)}}
+            </span>
+            <div class="player-data__data-sub avg">
+              AVG. TIME ALIVE
+            </div>
+          </div>
+        </div>
+        <div class="player-data__column"></div>
+      </div>
+    </div>
   </div>
   <div class="players players--right">
     <div class="players__counter">

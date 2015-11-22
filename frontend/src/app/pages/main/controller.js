@@ -17,6 +17,36 @@ class MainController {
     this.updaterService.startUpdates(this.update, this);
   }
 
+  getClasses(player) {
+    var c = '';
+    if (player.isEliminated) {
+      c += 'is-dead ';
+    }
+
+    if (player.active) {
+      c += 'is-active ';
+    }
+
+    return c;
+  }
+
+  onPlayerClick(player) {
+    player.active = true;
+    if (this.curPlayer) {
+      this.curPlayer = undefined;
+      this.players.forEach((el) => {
+        el.active = false;
+      });
+      return;
+    }
+
+    this.curPlayer = player.player;
+  }
+
+  getGoodTime(time) {
+    return Math.floor(time / 60) + ':' + moment().seconds(time % 60).format('ss');
+  }
+
   setMapInformation() {
     var latitude = (parseFloat(this.game.field.latitude_nw) + parseFloat(this.game.field.latitude_se)) / 2;
     var longitude = (parseFloat(this.game.field.longitude_nw) + parseFloat(this.game.field.longitude_se)) / 2;
@@ -67,7 +97,7 @@ class MainController {
         latitude: parseFloat(el.latitude),
         longitude: parseFloat(el.longitude)
       }, teamA.name, el.name);
-
+      x.player = el;
       if (!el.alive) {
         x.eliminate();
       }
@@ -80,7 +110,7 @@ class MainController {
         latitude: parseFloat(el.latitude),
         longitude: parseFloat(el.longitude)
       }, teamB.name, el.name);
-
+      x.player = el;
       if (!el.alive) {
         x.eliminate();
       }
@@ -145,6 +175,10 @@ class MainController {
             latitude: parseFloat(p.latitude),
             longitude: parseFloat(p.longitude)
           });
+
+          if (!p.alive) {
+            el.eliminate();
+          }
         }
       });
       data.team_b.players.forEach((p) => {
@@ -153,6 +187,10 @@ class MainController {
             latitude: parseFloat(p.latitude),
             longitude: parseFloat(p.longitude)
           });
+
+          if (!p.alive) {
+            el.eliminate();
+          }
         }
       });
     });
