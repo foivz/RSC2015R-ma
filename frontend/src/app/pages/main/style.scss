@@ -54,11 +54,11 @@
 
       .scoreboard__team-name {
         float: right;
-        color: $left-color;
         font-weight: 200;
       }
 
       .scoreboard__team-score {
+        color: $left-color;
         float: right;
       }
     }
@@ -68,11 +68,11 @@
 
       .scoreboard__team-name {
         float: left;
-        color: $right-color;
         font-weight: 200;
       }
 
       .scoreboard__team-score {
+        color: $right-color;
         float: left;
       }
     }

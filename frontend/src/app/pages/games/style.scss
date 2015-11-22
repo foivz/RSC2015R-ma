@@ -76,6 +76,13 @@
 }
 
 .container {
+  &--games {
+    .container__row--bottom {
+      height: auto;
+      min-height: $bottom-height;
+    }
+  }
+  
   &__row {
     &--colored {
       background-color: $secondary-background-color;

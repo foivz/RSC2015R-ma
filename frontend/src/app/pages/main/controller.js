@@ -28,10 +28,11 @@ class MainController {
       },
       zoom: 19,
       options: {
-        disableDefaultUI: true,
-        draggable: false,
-        zoomControl: false,
-        scrollwheel: false
+        disableDefaultUI: true
+
+        // draggable: false,
+        // zoomControl: false,
+        // scrollwheel: false
       }
     };
 
@@ -46,6 +47,8 @@ class MainController {
           lng: parseFloat(this.game.field.longitude_se)
         });
         map.fitBounds(this.fieldBounds);
+
+        this.refreshMap();
       }, 300);
     });
   }
