@@ -18,6 +18,10 @@ $ios-text-gray: #ADADAD;
     margin-left: 15px;
     border-bottom: 1px solid $ios-border;
 
+    &.is-judge {
+      border-bottom: 0;
+    }
+
     &:last-child {
       border-bottom: 0;
     }
