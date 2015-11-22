@@ -22,7 +22,7 @@ import ClockDirective from './directives/clock/directive';
 // import NavbarDirective from '../app/components/navbar/navbar.directive';
 // import MalarkeyDirective from '../app/components/malarkey/malarkey.directive';
 
-angular.module('testGen', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'uiGmapgoogle-maps', 'ngLodash'])
+angular.module('paintballWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'uiGmapgoogle-maps', 'ngLodash'])
   .constant('moment', moment)
   .config(config)
   .config(function(uiGmapGoogleMapApiProvider) {
