@@ -6,17 +6,17 @@ class Api::TeamMessagesController < Api::ApiBaseController
   end
 
   def inbox
-    if params[:team_id].present?
-      @team_messages = TeamMessage.where(team_id: params[:team_id])
-    elsif @logged_in_user.role == :judge
-      game = @logged_in_user.game
-      @team_messages = TeamMessage.where(team_id: [game.team_a.id, game.team_b.id])
+    team = params[:team].downcase
+    game = @logged_in_user.game
+    team_id = team == 'a' ? game.team_a.id : game.team_b.id
+
+    if team_id.present?
+      @team_messages = TeamMessage.where(team_id: team_id)
     else
       @team_messages = TeamMessage.where(team_id: @logged_in_user.team_id)
     end
 
     @team_messages = @team_messages.order(:created_at)
-
     render :index
   end
 
