@@ -24,7 +24,9 @@ class UpdaterService {
 
   getGameData() {
     if (this.config.mock === true) {
-      return Promise.resolve(this.parseGameData(this.mock.getData()));
+      return Promise.resolve(this.parseGameData({
+        data: this.mock.getData()
+      }));
     }
     return this.$http.get(this.config.apiUrl + '/games/' + this.id).then((data) => {
       return this.parseGameData(data);
@@ -49,6 +51,7 @@ class UpdaterService {
     //   el.latitude = baseLatB + Math.random() / 10000;
     //   el.longitude = baseLngB - Math.random() / 10000;
     // });
+
     return this.data;
   }
 }

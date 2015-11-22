@@ -2,7 +2,7 @@ class ClockController {
   constructor($scope, moment) {
     'ngInject';
 
-    this.elapsed = moment(Date.now()).unix() - moment(parseInt(this.startDate, 10)).unix();
+    this.elapsed = moment(Date.now()).unix() - moment(Date.parse(this.startDate)).unix();
     this.currentTime = parseInt(this.duration, 10) - this.elapsed;
     setInterval(() => {
       this.currentTime--;
